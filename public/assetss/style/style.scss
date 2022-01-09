@@ -1,0 +1,34 @@
+@import "main-color";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main {
+  background: url("../../assetss/image/main-background.svg") no-repeat center;
+  width: 100vw;
+  height: 100vh;
+}
+.header {
+  padding: 60px 60px;
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    &-logo {
+      background:url("../../assetss/image/Bouillon.svg") no-repeat center;
+      width: 133px;
+      height: 42px;
+    }
+    &-info {
+      font-size: $large-text-size;
+      font-weight: bold;
+    }
+    &-profile {
+      font-size: $preMedium-text-size;
+      font-weight: normal;
+    }
+  }
+  &_nav-bar {
+
+  }
+}
