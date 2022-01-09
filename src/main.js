@@ -4,7 +4,9 @@ import router from "./router";
 import store from "./store";
 import "../public/assetss/style/style.scss";
 import PortalVue from "portal-vue";
+import { initAxios } from "./helpers/axios";
 
+initAxios();
 Vue.use(PortalVue);
 
 Vue.config.productionTip = false;

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import { guardMaster } from "./navigationGuards";
 
 Vue.use(VueRouter);
 
@@ -11,6 +12,7 @@ const routes = [
     component: Home,
     meta: {
       layout: "defaultLayout",
+      requiresAuth: true,
     },
   },
   // {
@@ -28,6 +30,16 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const guardResult = guardMaster(to, from);
+  if (guardResult === true) {
+    next();
+  } else {
+    console.error("[router guard]", guardResult);
+    next(guardResult);
+  }
 });
 
 export default router;
