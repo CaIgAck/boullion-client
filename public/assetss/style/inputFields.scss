@@ -1,0 +1,30 @@
+@import "main-color";
+.form-control {
+  &__input {
+    background: $turquoise;
+    padding: 17px 30px;
+    border: none;
+    border-radius: $large-border;
+    color: $main-color;
+    width: 100%;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 10px black;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  &__line {
+    top: 0;
+    position: absolute;
+    height: 1px;
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding: 0 10%;
+    margin-top: 35px;
+    border: 1px solid $main-color;
+  }
+  &__container {
+    position: relative;
+  }
+}
