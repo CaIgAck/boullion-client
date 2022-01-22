@@ -6,7 +6,8 @@
   box-sizing: border-box;
 }
 .main {
-  background: url("../../assetss/image/main-background.svg") no-repeat center;
+  background: url("../../assetss/image/main-background.svg");
+  background-size: cover;
   width: 100vw;
   height: 100vh;
 }
