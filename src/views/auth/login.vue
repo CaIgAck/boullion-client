@@ -1,17 +1,17 @@
 <template>
   <DefaultLayout>
     <template>
-      <InputField />
+      <Login />
     </template>
   </DefaultLayout>
 </template>
 
 <script>
 import DefaultLayout from "../../components/layouts/defaultLayout";
-import InputField from "../../components/inputFields/inputField";
+import Login from "../../components/auth/login/login";
 export default {
   name: "login",
-  components: { DefaultLayout, InputField },
+  components: { DefaultLayout, Login },
 };
 </script>
 

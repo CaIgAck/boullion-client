@@ -5,7 +5,7 @@ import store from "./store";
 import "../public/assetss/style/style.scss";
 import PortalVue from "portal-vue";
 import { initAxios } from "./helpers/axios";
-import { initValidate } from "src/helpers/veeValidate";
+import { initValidate } from "./helpers/veeValidate";
 
 initValidate();
 initAxios();

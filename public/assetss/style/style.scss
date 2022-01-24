@@ -1,9 +1,11 @@
 @import "main-color";
 @import "inputFields";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 .main {
   background: url("../../assetss/image/main-background.svg");
@@ -29,6 +31,17 @@
       font-size: $preMedium-text-size;
       font-weight: normal;
     }
+  }
+}
+.login-form {
+  display: block;
+  margin: 0 auto;
+  max-width: 1190px;
+  text-align: center;
+  &__text {
+    font-size: $preLarge-text-size;
+    font-weight: 500;
+    color: $main-color;
   }
 }
 .col-1 {

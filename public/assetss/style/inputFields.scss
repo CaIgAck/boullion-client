@@ -1,5 +1,6 @@
 @import "main-color";
 .form-control {
+  width: inherit;
   &__input {
     background: $turquoise;
     padding: 17px 30px;

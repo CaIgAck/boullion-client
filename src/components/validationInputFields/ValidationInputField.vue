@@ -1,6 +1,7 @@
 <template>
   <ValidationProvider :name="name" :rules="rules" v-slot="{ errors }">
     <InputField
+      @input="$emit('input', $event)"
       :placeholder="placeholder"
       :label="name"
       :disabled="disabled"
