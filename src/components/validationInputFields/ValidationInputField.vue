@@ -1,15 +1,17 @@
 <template>
-  <ValidationProvider :name="name" :rules="rules" v-slot="{ errors }">
-    <InputField
-      @input="$emit('input', $event)"
-      :placeholder="placeholder"
-      :label="name"
-      :disabled="disabled"
-      :value="value"
-      :type="type"
-      :errors="errors"
-    />
-  </ValidationProvider>
+  <div>
+    <ValidationProvider :name="name" :rules="rules" v-slot="{ errors }">
+      <InputField
+        @input="$emit('input', $event)"
+        :placeholder="placeholder"
+        :label="name"
+        :disabled="disabled"
+        :value="value"
+        :type="type"
+        :errors="errors"
+      />
+    </ValidationProvider>
+  </div>
 </template>
 
 <script>
@@ -28,7 +30,7 @@ export default {
   },
   computed: {
     name() {
-      return this.value ?? this.nameError;
+      return this.label ?? this.nameError;
     },
   },
 };

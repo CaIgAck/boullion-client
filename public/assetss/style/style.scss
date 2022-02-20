@@ -13,19 +13,27 @@
   width: 100vw;
   height: 100vh;
 }
+.content {
+  display: block;
+  margin: 0 auto;
+  max-width: 1160px;
+}
 .header {
   padding: 60px 60px;
   &_container {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     &-logo {
       background:url("../../assetss/image/Bouillon.svg") no-repeat center;
       width: 133px;
       height: 42px;
     }
     &-info {
-      font-size: $large-text-size;
+      font-size: $medium-text-size;
       font-weight: bold;
+      margin-left: 180px;
+      color: $main-color;
+
     }
     &-profile {
       font-size: $preMedium-text-size;
@@ -36,12 +44,29 @@
 .login-form {
   display: block;
   margin: 0 auto;
-  max-width: 1190px;
-  text-align: center;
+  &__next {
+    display: flex;
+    justify-content: flex-end;
+  }
   &__text {
     font-size: $preLarge-text-size;
     font-weight: 500;
     color: $main-color;
+    text-align: center;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 116px;
   }
 }
 .col-1 {
@@ -102,5 +127,37 @@
 .col-12 {
   flex: 0 0 auto;
   width: 100%;
+}
+.btn-main {
+  background-color: $second-color;
+  border-radius: $medium-border;
+  padding: 11px 100px;
+  color: $third-color;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.registration-step-one {
+  margin: 0 auto;
+  display: block;
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $main-color;
+    font-size: $preLarge-text-size;
+    font-weight: 500;
+    text-align: center;
+  }
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 116px;
+  }
 }
 

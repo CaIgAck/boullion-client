@@ -2,12 +2,11 @@ import store from "../../store";
 const guards = {
   requiresAuth: requiresAuth,
 };
-// eslint-disable-next-line no-unused-vars
-export function requiresAuth(to, from) {
+export function requiresAuth(to) {
   const requiresAuth = to.meta.requiresAuth;
   if (typeof requiresAuth === "boolean") {
     if (requiresAuth) {
-      return store.getters.isLogin || { name: "Login" };
+      return store.getters.isLogin || { name: "Main" };
     } else {
       return !store.getters.isLogin || { path: "/" };
     }

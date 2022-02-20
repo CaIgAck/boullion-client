@@ -18,11 +18,38 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/auth/login"),
+      import(/* webpackChunkName: "about" */ "../views/auth/LoginPage"),
+  },
+  {
+    path: "/main",
+    name: "Main",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/auth/MainQuestionPage"),
+  },
+  {
+    path: "/registration-step-one",
+    name: "registration-step-one",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/auth/RegistrationFormSteps/RegistrationStepOnePage"
+      ),
+  },
+  {
+    path: "/registration-step-two",
+    name: "registration-step-two",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/auth/RegistrationFormSteps/RegistrationStepTwoPage"
+      ),
+  },
+  {
+    path: "/registration-step-tree",
+    name: "registration-step-tree",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/auth/RegistrationFormSteps/RegistrationStepTreePage"
+      ),
   },
 ];
 

@@ -4,10 +4,10 @@
       <div class="header_container">
         <div class="header_container-logo"></div>
         <div class="header_container-info">
-          <portal to="header-info"> </portal>
+          <portal-target name="header-info"></portal-target>
         </div>
         <div class="header_container-profile">
-          <portal to="header-profile"></portal>
+          <portal-target name="header-profile"></portal-target>
         </div>
       </div>
       <div class="header_nav-bar"></div>

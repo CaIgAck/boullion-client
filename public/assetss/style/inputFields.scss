@@ -1,5 +1,6 @@
 @import "main-color";
 .form-control {
+  color: $main-color;
   width: inherit;
   &__input {
     background: $turquoise;
@@ -24,6 +25,7 @@
     padding: 0 10%;
     margin-top: 35px;
     border: 1px solid $main-color;
+    background-color: $main-color;
   }
   &__container {
     position: relative;

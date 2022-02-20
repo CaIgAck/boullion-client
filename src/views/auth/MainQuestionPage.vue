@@ -1,17 +1,17 @@
 <template>
   <DefaultLayout>
     <template>
-      <Login />
+      <MainQuestion />
     </template>
   </DefaultLayout>
 </template>
 
 <script>
 import DefaultLayout from "../../components/layouts/defaultLayout";
-import Login from "../../components/auth/login/login";
+import MainQuestion from "../../components/auth/mainQuestion/mainQuestion";
 export default {
-  name: "login",
-  components: { DefaultLayout, Login },
+  name: "Main",
+  components: { MainQuestion, DefaultLayout },
 };
 </script>
 
