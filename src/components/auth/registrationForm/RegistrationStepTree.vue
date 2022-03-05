@@ -1,7 +1,7 @@
 <template>
   <CreateLayout class="registration-step-one">
     <template>
-      <div>
+      <div v-if="!isShowFinishText">
         <div class="registration-step-one__text">
           Отлично, контакт установлен! Теперь чтобы никто не узнал Ваши
           персональные данные придумайте пароль.
@@ -15,9 +15,21 @@
           />
         </div>
       </div>
+      <div v-if="isShowFinishText">
+        <div class="registration-step-one__text">
+          Поздравляю, вы успешно зарегистрировались! Поговорим о ваших
+          предпочтениях в еде?
+        </div>
+      </div>
     </template>
     <template #btns>
-      <div class="login-form__next">
+      <div class="login-form__next" v-if="!isShowFinishText">
+        <button class="btn-main" @click="finishRegistration()">Далее</button>
+      </div>
+      <div
+        class="login-form__next login-form__next-finish"
+        v-if="isShowFinishText"
+      >
         <button class="btn-main">Далее</button>
       </div>
     </template>
@@ -30,6 +42,16 @@ import ValidationInputField from "../../validationInputFields/ValidationInputFie
 export default {
   name: "RegistrationStepTree",
   components: { ValidationInputField, CreateLayout },
+  data() {
+    return {
+      isShowFinishText: false,
+    };
+  },
+  methods: {
+    finishRegistration() {
+      this.isShowFinishText = !this.isShowFinishText;
+    },
+  },
 };
 </script>
 

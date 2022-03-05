@@ -47,6 +47,9 @@
   &__next {
     display: flex;
     justify-content: flex-end;
+    &-finish {
+      margin-top: 360px;
+    }
   }
   &__text {
     font-size: $preLarge-text-size;
