@@ -8,8 +8,7 @@
           :placeholder="placeholder"
           :disabled="disabled"
           class="form-control__input"
-          :value="value"
-          @input="$emit('input', $event)"
+          v-model="normalizeData"
         />
         <div class="form-control__line"></div>
       </div>
@@ -24,12 +23,35 @@
 export default {
   name: "inputField",
   props: {
-    value: [String, Number],
+    value: [String, Number, InputEvent],
     disabled: Boolean,
     errors: Array,
     placeholder: String,
     label: String,
     type: String,
+  },
+  methods: {
+    set(value) {
+      console.log(value);
+      this.$emit("input", value);
+    },
+  },
+  computed: {
+    normalizeData: {
+      get() {
+        // if (this.value?.value) {
+        //   return this.value.value;
+        // }
+        return this.value;
+      },
+      set(newValue) {
+        if (newValue === "") {
+          this.$emit("input", null);
+          return;
+        }
+        this.$emit("input", newValue);
+      },
+    },
   },
 };
 </script>

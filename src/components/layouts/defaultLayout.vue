@@ -1,5 +1,12 @@
 <template>
   <div class="main">
+    <div class="notification" v-if="error">
+      <div>
+        {{ error.error }}
+        {{ error.message }}
+      </div>
+      <div @click="clearError" class="icon-close">x</div>
+    </div>
     <div class="header">
       <div class="header_container">
         <div class="header_container-logo"></div>
@@ -24,6 +31,16 @@
 <script>
 export default {
   name: "defaultLayout",
+  computed: {
+    error() {
+      return this.$store.getters.getError;
+    },
+  },
+  methods: {
+    clearError() {
+      this.$store.commit("clearError");
+    },
+  },
 };
 </script>
 

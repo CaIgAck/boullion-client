@@ -18,26 +18,46 @@
   margin: 0 auto;
   max-width: 1160px;
 }
+.icon-close {
+  cursor: pointer;
+}
+.notification {
+  background-color: red;
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 20px;
+}
 .header {
-  padding: 60px 60px;
+  padding: 60px 0;
+  margin: 0 auto;
+  max-width: 1160px;
   &_container {
     display: flex;
     align-items: center;
     &-logo {
+      margin-right: 100px;
       background:url("../../assetss/image/Bouillon.svg") no-repeat center;
       width: 133px;
       height: 42px;
     }
     &-info {
+      flex-grow: 6;
       font-size: $medium-text-size;
       font-weight: bold;
-      margin-left: 180px;
       color: $main-color;
 
     }
     &-profile {
-      font-size: $preMedium-text-size;
+      flex-grow: 1;
+      font-size: $small-text-size;
       font-weight: normal;
+      color: $main-color;
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 }

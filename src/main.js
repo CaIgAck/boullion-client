@@ -7,10 +7,10 @@ import PortalVue from "portal-vue";
 import { initAxios } from "./helpers/axios";
 import { initValidate } from "./helpers/veeValidate";
 
-initValidate();
-initAxios();
 Vue.use(PortalVue);
 
+initValidate();
+initAxios().then();
 Vue.config.productionTip = false;
 
 new Vue({

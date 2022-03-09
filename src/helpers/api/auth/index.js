@@ -1,8 +1,8 @@
-import { Axios } from "axios";
+import axios from "axios";
 
 export async function loginRequest({ data }) {
-  return Axios.post("/auth/login", data);
+  return axios.post("/auth/login", data);
 }
 export async function registrationRequest({ data }) {
-  return Axios.post("/auth/registration", data);
+  return axios.post("/auth/registration", data);
 }

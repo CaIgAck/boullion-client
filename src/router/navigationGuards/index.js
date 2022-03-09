@@ -6,9 +6,9 @@ export function requiresAuth(to) {
   const requiresAuth = to.meta.requiresAuth;
   if (typeof requiresAuth === "boolean") {
     if (requiresAuth) {
-      return store.getters.isLogin || { name: "Main" };
+      return !!store.getters.isLogin ?? { name: "profile" };
     } else {
-      return !store.getters.isLogin || { path: "/" };
+      return !store.getters.isLogin ?? { path: "/main" };
     }
   } else return true;
 }

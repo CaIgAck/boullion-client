@@ -1,7 +1,6 @@
 import axios from "axios";
 import store from "../../store";
-
-const { BASE_URL, PROD_URL } = process.env;
+// const { BASE_URL, PROD_URL } = process.env;
 
 export async function axiosInterceptor() {
   axios.interceptors.response.use(
@@ -9,19 +8,26 @@ export async function axiosInterceptor() {
       return response;
     },
     (error) => {
+      console.log("reject", error.response);
+      const data = error.response.data;
+      const { status } = error.response;
       if (
-        error.error === 403 &&
-        error.message === "Токен обязателен для аунтефикации"
+        data.error === 403 &&
+        data.message === "Токен обязателен для аунтефикации"
       ) {
         return store.dispatch("logout");
+      }
+      if (status === 500 || status === 400) {
+        store.commit("setError", data);
       }
     }
   );
 }
 
 export async function initAxios() {
-  axios.defaults.baseURL =
-    process.env.NODE_ENV === "production" ? PROD_URL : BASE_URL;
+  axios.defaults.baseURL = "http://localhost:8080";
+  //TODO: create deploy
+  // process.env.NODE_ENV !== "production" ? BASE_URL : PROD_URL;
   axios.defaults.headers.post["Content-Type"] = "application/json";
   await axiosInterceptor();
 }

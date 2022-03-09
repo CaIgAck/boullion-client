@@ -1,8 +1,8 @@
-import { Axios } from "axios";
+import axios from "axios";
 import { getQueriedUrl } from "../../queryStringHelper";
 
 export async function getSurveyDetailRequest({ id, query }) {
-  return Axios.get(
+  return axiosget(
     getQueriedUrl({
       url: `/survey/${id}`,
       query: {
@@ -13,5 +13,5 @@ export async function getSurveyDetailRequest({ id, query }) {
 }
 
 export async function createSurveyRequest({ data }) {
-  return Axios.post("/survey", data);
+  return axiospost("/Survey", data);
 }

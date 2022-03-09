@@ -1,4 +1,5 @@
 import { loginRequest } from "../../helpers/api/auth";
+import router from "../../router";
 
 const state = {
   login: {
@@ -14,15 +15,18 @@ const state = {
     survey: null,
   },
   error: null,
+  isLogin: false,
 };
 const getters = {
   login: (state) => state.login,
+  isLogin: (state) => !!localStorage.getItem("token") ?? !!state.isLogin,
 };
 const actions = {
   async login(context) {
     try {
       const login = context.getters.login;
       const response = await loginRequest({ data: login });
+      await router.push("/profile");
       context.commit("setLogin", response.data.token);
     } catch (e) {
       return e;
@@ -32,7 +36,11 @@ const actions = {
 const mutations = {
   setLogin(state, token) {
     localStorage.setItem("token", token);
+    state.isLogin = true;
     state.error = false;
+  },
+  setDataLogin(state, { fieldName, newValue }) {
+    state.login[fieldName] = newValue;
   },
 };
 

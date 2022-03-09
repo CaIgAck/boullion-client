@@ -1,8 +1,8 @@
-import { Axios } from "axios";
+import axios from "axios";
 import { getQueriedUrl } from "../../queryStringHelper";
 
 export async function getProfileRequest({ query }) {
-  return Axios.get(
+  return axios.get(
     getQueriedUrl({
       url: "/profile",
       query: {

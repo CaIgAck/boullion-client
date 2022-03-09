@@ -8,7 +8,7 @@
         }
       "
     >
-      <slot name="default" v-bind:handleSubmit="handleSubmit" />
+      <slot name="default" />
       <div v-if="$scopedSlots.btns" class="btns card">
         <slot name="btns" v-bind:handleSubmit="handleSubmit"> </slot>
       </div>
