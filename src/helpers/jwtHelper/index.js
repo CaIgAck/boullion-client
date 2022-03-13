@@ -4,7 +4,7 @@ export function saveToken(token) {
 
 export function getToken() {
   const strToken = localStorage.getItem("token");
-  return strToken ? strToken : null;
+  return strToken ? JSON.parse(strToken) : null;
 }
 
 export function removeToken() {

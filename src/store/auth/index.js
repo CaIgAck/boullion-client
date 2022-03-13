@@ -29,7 +29,7 @@ const actions = {
     try {
       const login = context.getters.login;
       const response = await loginRequest({ data: login });
-      context.commit("setLogin", response.data.token);
+      context.commit("setLogin", { token: response.data.token });
       router.push("/profile");
     } catch (e) {
       return e;

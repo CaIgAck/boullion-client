@@ -2,7 +2,7 @@ import axios from "axios";
 import { getQueriedUrl } from "../../queryStringHelper";
 
 export async function getUsersListRequest({ query }) {
-  return axiosget(
+  return axios.get(
     getQueriedUrl({
       url: "/users",
       query: {
@@ -13,7 +13,7 @@ export async function getUsersListRequest({ query }) {
 }
 
 export async function getUsersDetailRequest({ id, query }) {
-  return axiosget(
+  return axios.get(
     getQueriedUrl({
       url: `/users/${id}`,
       query: {

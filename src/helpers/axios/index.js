@@ -1,5 +1,6 @@
 import axios from "axios";
 import store from "../../store";
+import { getToken } from "../jwtHelper";
 // const { BASE_URL, PROD_URL } = process.env;
 
 export async function axiosInterceptor() {
@@ -29,5 +30,6 @@ export async function initAxios() {
   //TODO: create deploy
   // process.env.NODE_ENV !== "production" ? BASE_URL : PROD_URL;
   axios.defaults.headers.post["Content-Type"] = "application/json";
+  axios.defaults.headers["x-access-token"] = getToken();
   await axiosInterceptor();
 }

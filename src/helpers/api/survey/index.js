@@ -2,7 +2,7 @@ import axios from "axios";
 import { getQueriedUrl } from "../../queryStringHelper";
 
 export async function getSurveyDetailRequest({ id, query }) {
-  return axiosget(
+  return axios.get(
     getQueriedUrl({
       url: `/survey/${id}`,
       query: {
