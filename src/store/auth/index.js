@@ -1,7 +1,9 @@
 import { loginRequest } from "../../helpers/api/auth";
 import router from "../../router";
+import { getToken, saveToken } from "../../helpers/jwtHelper";
 
 const state = {
+  token: getToken(),
   login: {
     email: null,
     password: null,
@@ -15,19 +17,20 @@ const state = {
     survey: null,
   },
   error: null,
-  isLogin: false,
 };
 const getters = {
   login: (state) => state.login,
-  isLogin: (state) => !!localStorage.getItem("token") ?? !!state.isLogin,
+  isLogin: (state) => {
+    if (state.token) return state.token;
+  },
 };
 const actions = {
   async login(context) {
     try {
       const login = context.getters.login;
       const response = await loginRequest({ data: login });
-      await router.push("/profile");
       context.commit("setLogin", response.data.token);
+      router.push("/profile");
     } catch (e) {
       return e;
     }
@@ -35,8 +38,7 @@ const actions = {
 };
 const mutations = {
   setLogin(state, token) {
-    localStorage.setItem("token", token);
-    state.isLogin = true;
+    saveToken(token);
     state.error = false;
   },
   setDataLogin(state, { fieldName, newValue }) {

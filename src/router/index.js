@@ -5,15 +5,15 @@ import { guardMaster } from "./navigationGuards";
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home,
-  //   meta: {
-  //     layout: "defaultLayout",
-  //     requiresAuth: true,
-  //   },
-  // },
+  {
+    path: "/",
+    redirect: "/profile",
+    name: "Home",
+    meta: {
+      layout: "defaultLayout",
+      requiresAuth: true,
+    },
+  },
   {
     path: "/login",
     name: "Login",
@@ -79,6 +79,16 @@ const routes = [
     name: "profile",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/profile/ProfilePage"),
+    meta: {
+      layout: "defaultLayout",
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/users",
+    name: "users",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/users/UsersPage"),
     meta: {
       layout: "defaultLayout",
       requiresAuth: true,
