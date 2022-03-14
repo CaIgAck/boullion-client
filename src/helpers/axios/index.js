@@ -30,6 +30,7 @@ export async function initAxios() {
   //TODO: create deploy
   // process.env.NODE_ENV !== "production" ? BASE_URL : PROD_URL;
   axios.defaults.headers.post["Content-Type"] = "application/json";
-  axios.defaults.headers["x-access-token"] = getToken();
+  const { token } = getToken();
+  axios.defaults.headers["x-access-token"] = token;
   await axiosInterceptor();
 }

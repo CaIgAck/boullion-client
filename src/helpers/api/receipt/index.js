@@ -24,5 +24,5 @@ export async function getReceiptDetailRequest({ id, query }) {
 }
 
 export async function createReceiptRequest({ data }) {
-  return axiospost("/Receipt", data);
+  return axios.post("/Receipt", data);
 }

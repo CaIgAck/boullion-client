@@ -13,5 +13,5 @@ export async function getSurveyDetailRequest({ id, query }) {
 }
 
 export async function createSurveyRequest({ data }) {
-  return axiospost("/Survey", data);
+  return axios.post("/Survey", data);
 }

@@ -25,11 +25,20 @@ export default {
   },
   computed: {
     someComponent() {
-      const component = import(`src/components/${this.componentName}.vue`);
-      return component;
+      const componentName = this.componentName.split("/")[1];
+      const directoryName = this.componentName.split("/")[0];
+      console.log(componentName, directoryName);
+      return () => import(`../${directoryName}/${componentName}.vue`);
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.grid-list {
+  max-width: 1120px;
+  &__item {
+    margin-bottom: 35px;
+  }
+}
+</style>

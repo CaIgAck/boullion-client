@@ -10,7 +10,6 @@ const routes = [
     redirect: "/profile",
     name: "Home",
     meta: {
-      layout: "defaultLayout",
       requiresAuth: true,
     },
   },
@@ -80,7 +79,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/profile/ProfilePage"),
     meta: {
-      layout: "defaultLayout",
       requiresAuth: true,
     },
   },
@@ -90,7 +88,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/users/UsersPage"),
     meta: {
-      layout: "defaultLayout",
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/orders",
+    name: "orders",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/orders/OrdersPage"),
+    meta: {
       requiresAuth: true,
     },
   },
