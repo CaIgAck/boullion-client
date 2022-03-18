@@ -1,7 +1,7 @@
 <template>
   <DefaultLayout>
     <template>
-      <portal to="header-info">Пользователи</portal>
+      <portal to="header-info">Заявки</portal>
       <portal to="header-profile">Модератор </portal>
       <GridList :list-entry="ordersList" :component-name="componentName" />
     </template>
@@ -29,6 +29,7 @@ export default {
     query() {
       return {
         status: "new",
+        itemCount: 2,
       };
     },
   },

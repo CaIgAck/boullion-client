@@ -1,5 +1,8 @@
 <template>
   <div class="main">
+    <transition name="fade">
+      <NavigationDrawer v-if="isMenu" @show-menu="showMenu" />
+    </transition>
     <div class="notification" v-if="error">
       <div>
         {{ error.error }}
@@ -17,7 +20,15 @@
           <portal-target name="header-profile"></portal-target>
         </div>
       </div>
-      <div class="header_nav-bar"></div>
+      <div class="header_nav-bar">
+        <button class="btn-main btn-nav-bar" @click="showMenu">
+          <img
+            src="../../../public/assetss/image/arrow_down.svg"
+            alt="Avatar"
+            class="receipt-img"
+          />
+        </button>
+      </div>
     </div>
     <div class="content">
       <slot></slot>
@@ -29,14 +40,24 @@
 </template>
 
 <script>
+import NavigationDrawer from "../Navigation/NavigationDrawer";
 export default {
   name: "defaultLayout",
+  components: { NavigationDrawer },
+  data() {
+    return {
+      isMenu: false,
+    };
+  },
   computed: {
     error() {
       return this.$store.getters.getError;
     },
   },
   methods: {
+    showMenu() {
+      this.isMenu = !this.isMenu;
+    },
     clearError() {
       this.$store.commit("clearError");
     },
@@ -44,4 +65,18 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.btn-nav-bar {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
+</style>

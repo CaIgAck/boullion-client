@@ -158,6 +158,13 @@
   text-decoration: none;
   border: none;
   cursor: pointer;
+  transition: 0.5s;
+  &:hover {
+    background-color: $second-color-light;
+  }
+  &:focus {
+    background-color: $second-color-dark;
+  }
 }
 
 .registration-step-one {
