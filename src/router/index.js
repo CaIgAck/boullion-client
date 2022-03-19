@@ -7,8 +7,9 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "/profile",
     name: "Home",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/profile/ProfilePage"),
     meta: {
       requiresAuth: true,
     },

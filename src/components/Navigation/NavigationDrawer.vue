@@ -2,6 +2,7 @@
   <div class="navigation">
     <div class="navigation-content">
       <div>
+        <img src="../../../public/assetss/image/Bouillon.svg" alt="logo" />
         <button
           class="btn-main btn-nav-bar btn-nav-close"
           @click="$emit('show-menu')"
@@ -13,16 +14,34 @@
           />
         </button>
       </div>
-      <div></div>
+      <div class="navigation-content__list">
+        <router-link
+          v-for="(menuEl, index) in menu"
+          :key="index"
+          :to="menuEl.path"
+          class="navigation-link"
+          :active-class="'navigation-link-active'"
+        >
+          {{ menuEl.name }}
+        </router-link>
+      </div>
       <div></div>
     </div>
-    <div class="navigation-wrapper">ewq</div>
+    <div class="navigation-wrapper"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "NavigationDrawer",
+  props: {
+    menu: Array,
+  },
+  computed: {
+    path() {
+      return this.$route.path;
+    },
+  },
 };
 </script>
 
@@ -40,7 +59,19 @@ export default {
     width: 20%;
     height: inherit;
     left: 0;
-    background-color: $third-color;
+    background-color: #06606b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    &__list {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
   }
   &-wrapper {
     position: absolute;
@@ -50,8 +81,26 @@ export default {
     background-color: black;
     opacity: 0.5;
   }
+  &-link {
+    text-align: center;
+    color: $main-color;
+    border-radius: $medium-border;
+    text-decoration: none;
+    padding: 34px 0;
+    width: 100%;
+    &-active {
+      text-align: center;
+      background: $third-color;
+      color: $main-color;
+      border-radius: $medium-border;
+      text-decoration: none;
+      padding: 34px 0;
+      width: 100%;
+    }
+  }
 }
 .btn-nav-close {
+  margin-left: 15px;
   transform: rotate(180deg);
 }
 </style>

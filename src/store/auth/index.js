@@ -1,5 +1,4 @@
 import { loginRequest } from "../../helpers/api/auth";
-import router from "../../router";
 import { getToken, saveToken } from "../../helpers/jwtHelper";
 
 const state = {
@@ -30,7 +29,6 @@ const actions = {
       const login = context.getters.login;
       const response = await loginRequest({ data: login });
       context.commit("setLogin", { token: response.data.token });
-      router.push("/profile");
     } catch (e) {
       return e;
     }
@@ -39,6 +37,7 @@ const actions = {
 const mutations = {
   setLogin(state, token) {
     saveToken(token);
+    state.token = token;
     state.error = false;
   },
   setDataLogin(state, { fieldName, newValue }) {

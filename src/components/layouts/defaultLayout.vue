@@ -1,7 +1,11 @@
 <template>
   <div class="main">
     <transition name="fade">
-      <NavigationDrawer v-if="isMenu" @show-menu="showMenu" />
+      <NavigationDrawer
+        v-if="isMenu"
+        @show-menu="showMenu"
+        :menu="availableMenu"
+      />
     </transition>
     <div class="notification" v-if="error">
       <div>
@@ -20,7 +24,7 @@
           <portal-target name="header-profile"></portal-target>
         </div>
       </div>
-      <div class="header_nav-bar">
+      <div class="header_nav-bar" v-if="isLogin">
         <button class="btn-main btn-nav-bar" @click="showMenu">
           <img
             src="../../../public/assetss/image/arrow_down.svg"
@@ -40,6 +44,7 @@
 </template>
 
 <script>
+import menuList from "../../helpers/menuList";
 import NavigationDrawer from "../Navigation/NavigationDrawer";
 export default {
   name: "defaultLayout",
@@ -52,6 +57,15 @@ export default {
   computed: {
     error() {
       return this.$store.getters.getError;
+    },
+    isLogin() {
+      return this.$store.getters.isLogin;
+    },
+    role() {
+      return this.$store.getters.getProfile.role;
+    },
+    availableMenu() {
+      return menuList.menu.filter((el) => el.roles.includes(this.role));
     },
   },
   methods: {

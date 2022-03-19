@@ -59,7 +59,9 @@ export default {
   },
   methods: {
     loginForm() {
-      this.$store.dispatch("login");
+      this.$store.dispatch("login").then(() => {
+        this.$router.push("/profile");
+      });
     },
   },
 };
