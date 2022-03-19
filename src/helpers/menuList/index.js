@@ -1,13 +1,13 @@
 const menu = [
   {
     name: "План питания",
-    path: "/users",
+    path: "/meal-plan",
     roles: ["user"],
   },
   {
     name: "Профиль",
-    path: "/users",
-    roles: ["user"],
+    path: "/profile",
+    roles: ["user", "admin"],
   },
   {
     name: "Избранное",

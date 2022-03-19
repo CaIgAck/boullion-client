@@ -25,7 +25,9 @@
           {{ menuEl.name }}
         </router-link>
       </div>
-      <div></div>
+      <div>
+        <button class="btn-main" @click="logout">Выход</button>
+      </div>
     </div>
     <div class="navigation-wrapper"></div>
   </div>
@@ -40,6 +42,12 @@ export default {
   computed: {
     path() {
       return this.$route.path;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.commit("logout");
+      this.$router.push("/");
     },
   },
 };

@@ -1,5 +1,5 @@
 import { loginRequest } from "../../helpers/api/auth";
-import { getToken, saveToken } from "../../helpers/jwtHelper";
+import { getToken, removeToken, saveToken } from "../../helpers/jwtHelper";
 
 const state = {
   token: getToken(),
@@ -42,6 +42,14 @@ const mutations = {
   },
   setDataLogin(state, { fieldName, newValue }) {
     state.login[fieldName] = newValue;
+  },
+  logout(state) {
+    removeToken();
+    state.token = null;
+    state.login = {
+      email: null,
+      password: null,
+    };
   },
 };
 

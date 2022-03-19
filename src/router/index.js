@@ -101,6 +101,15 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/meal-plan",
+    name: "MealPlan",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/MealPlan/MealPlanPage"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({
