@@ -26,3 +26,7 @@ export async function getReceiptDetailRequest({ id, query }) {
 export async function createReceiptRequest({ data }) {
   return axios.post("/Receipt", data);
 }
+
+export async function updateReceiptRequest({ id, data }) {
+  return axios.patch(`/receipt/${id}`, data);
+}

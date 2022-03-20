@@ -47,6 +47,7 @@ export default {
   methods: {
     logout() {
       this.$store.commit("logout");
+      this.$store.commit("clearProfile");
       this.$router.push("/");
     },
   },

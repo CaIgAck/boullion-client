@@ -3,7 +3,7 @@
     <template>
       <portal to="header-info">Заявки</portal>
       <portal to="header-profile">Модератор </portal>
-      <GridList :list-entry="ordersList" :component-name="componentName" />
+      <GridList :list-entry="getOrderList" :component-name="componentName" />
     </template>
   </DefaultLayout>
 </template>
@@ -17,33 +17,27 @@ export default {
   components: { GridList, DefaultLayout },
   data() {
     return {
-      ordersList: [],
-      componentName: "Orders/OrdersItem",
-      pagination: null,
+      componentName: "Receipt/OrdersItem",
+      query: {
+        status: "new",
+        itemCount: 2,
+      },
     };
   },
   async created() {
     await this.getOrdersList();
   },
   computed: {
-    query() {
-      return {
-        status: "new",
-        itemCount: 2,
-      };
+    getOrderList() {
+      return this.$store.getters.getReceiptList.items;
+    },
+    getOrderListPagination() {
+      return this.$store.getters.getReceiptList.pagination;
     },
   },
   methods: {
-    async getOrdersList() {
-      try {
-        const { pagination, items } = (
-          await getReceiptListRequest({ query: this.query })
-        ).data;
-        this.ordersList = items;
-        this.pagination = pagination;
-      } catch (e) {
-        return console.error(e);
-      }
+    getOrdersList() {
+      this.$store.dispatch("getReceiptList", { query: this.query });
     },
   },
 };

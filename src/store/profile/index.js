@@ -26,6 +26,18 @@ const actions = {
   },
 };
 const mutations = {
+  clearProfile(state) {
+    state.profile = {
+      _id: null,
+      userName: null,
+      email: null,
+      avatar: null,
+      role: null,
+      created: null,
+      category: null,
+      survey: null,
+    };
+  },
   setProfileDetails(state, data) {
     console.log(data);
     state.profile = data;

@@ -2,7 +2,7 @@
   <div class="main">
     <transition name="fade">
       <NavigationDrawer
-        v-if="isMenu"
+        v-if="isMenu && role"
         @show-menu="showMenu"
         :menu="availableMenu"
       />
@@ -53,6 +53,9 @@ export default {
     return {
       isMenu: false,
     };
+  },
+  created() {
+    this.$store.dispatch("getProfileDetails", { query: null });
   },
   computed: {
     error() {

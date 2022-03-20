@@ -9,13 +9,13 @@
 }
 .main {
   background: url("../../assetss/image/main-background.svg");
-  background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
 }
 .content {
   display: block;
   margin: 0 auto;
   max-width: 1320px;
+  padding-bottom: 10px;
 }
 .icon-close {
   cursor: pointer;

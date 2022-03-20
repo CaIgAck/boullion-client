@@ -18,19 +18,53 @@
       </div>
     </div>
     <div class="orders-item__buttons">
-      <button class="btn-main orders-item__button-text">Ободрить</button>
-      <button class="btn-main orders-item__button-text">Отклонить</button>
+      <button
+        class="btn-main orders-item__button-text"
+        @click="changeStatus('accept')"
+      >
+        Ободрить
+      </button>
+      <button
+        class="btn-main orders-item__button-text"
+        @click="changeStatus('canceled')"
+      >
+        Отклонить
+      </button>
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "OrdersItem",
+  props: {
+    entry: Object,
+  },
+  data() {
+    return {
+      query: {
+        status: "new",
+        itemCount: 2,
+      },
+    };
+  },
+  methods: {
+    changeStatus(status) {
+      const id = this.entry._id;
+      const data = {
+        status: status,
+      };
+      this.$store
+        .dispatch("changeStatusReceipt", { id, status: data })
+        .then(() => {
+          this.$store.dispatch("getReceiptList", { query: this.query });
+        });
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
-@import "public/assetss/style/main-color";
+@import "../../../public/assetss/style/main-color";
 .orders-item {
   &__container {
     color: $main-color;
