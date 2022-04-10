@@ -4,12 +4,29 @@
       <ProfileUser />
       <div class="profile-details__receipt-detail">
         <div class="profile-details__text">Мои рецепты</div>
-        <div class="profile-details__receipts">
-          <ReceiptImg />
-          <ReceiptImg />
+        <div class="profile-details__receipts" v-if="!isOpenReceiptAll">
+          <ReceiptImg
+            v-for="(receipt, index) in getTwoReceipts"
+            :entry="receipt"
+            :key="index"
+          />
+        </div>
+        <div class="profile-details__receipts" v-else>
+          <ReceiptImg
+            class="profile-details__receipts-img"
+            v-for="(receipt, index) in getReceipts"
+            :entry="receipt"
+            :key="index"
+          />
         </div>
       </div>
-      <div class="profile-details__pagination">Показать все</div>
+      <div
+        class="profile-details__pagination"
+        @click="openAllReceiptUser"
+        v-if="!isOpenReceiptAll"
+      >
+        Показать все
+      </div>
     </div>
     <div class="profile-details__add-receipt">
       <AddReceipt />
@@ -24,6 +41,27 @@ import AddReceipt from "./AddReceipt";
 export default {
   name: "ProfileDetails",
   components: { AddReceipt, ReceiptImg, ProfileUser },
+  data() {
+    return {
+      isOpenReceiptAll: false,
+    };
+  },
+  computed: {
+    getReceipts() {
+      return this.$store.getters.getReceiptList.items;
+    },
+    getTwoReceipts() {
+      return this.$store.getters.getReceiptList.items.slice(0, 2);
+    },
+    userProfile() {
+      return this.$store.getters.getProfile;
+    },
+  },
+  methods: {
+    openAllReceiptUser() {
+      this.isOpenReceiptAll = !this.isOpenReceiptAll;
+    },
+  },
 };
 </script>
 
@@ -59,9 +97,13 @@ export default {
     margin-top: 25px;
   }
   &__receipts {
+    flex-wrap: wrap;
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    &-img {
+      margin-top: 20px;
+    }
   }
 }
 </style>

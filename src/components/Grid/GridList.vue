@@ -27,7 +27,6 @@ export default {
     someComponent() {
       const componentName = this.componentName.split("/")[1];
       const directoryName = this.componentName.split("/")[0];
-      console.log(componentName, directoryName);
       return () => import(`../${directoryName}/${componentName}.vue`);
     },
   },

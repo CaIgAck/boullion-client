@@ -11,12 +11,7 @@ const menu = [
   },
   {
     name: "Избранное",
-    path: "/users",
-    roles: ["user"],
-  },
-  {
-    name: "Список покупок",
-    path: "/users",
+    path: "/favorites",
     roles: ["user"],
   },
   {

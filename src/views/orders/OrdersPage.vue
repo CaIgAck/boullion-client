@@ -11,7 +11,6 @@
 <script>
 import DefaultLayout from "../../components/layouts/defaultLayout";
 import GridList from "../../components/Grid/GridList";
-import { getReceiptListRequest } from "../../helpers/api/receipt";
 export default {
   name: "OrdersPage",
   components: { GridList, DefaultLayout },

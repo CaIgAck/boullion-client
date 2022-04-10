@@ -1,18 +1,34 @@
 <template>
-  <div class="receipt-img__container">
+  <div class="receipt-img__container" @click="openDetails">
     <img
       src="../../../public/assetss/image/Rectangle.svg"
       alt="Avatar"
       class="receipt-img"
     />
     <div class="receipt-img__overlay">
-      <div class="text">Hello World</div>
+      <div class="text">{{ name }}</div>
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "ReceiptImg",
+  props: {
+    entry: Object,
+  },
+  computed: {
+    id() {
+      return this.entry._id;
+    },
+    name() {
+      return this.entry.receiptName;
+    },
+  },
+  methods: {
+    openDetails() {
+      this.$router.push(`/receipt/${this.id}`);
+    },
+  },
 };
 </script>
 

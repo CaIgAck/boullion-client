@@ -1,5 +1,6 @@
-import { loginRequest } from "../../helpers/api/auth";
+import { loginRequest, registrationRequest } from "../../helpers/api/auth";
 import { getToken, removeToken, saveToken } from "../../helpers/jwtHelper";
+import { createSurveyRequest } from "../../helpers/api/survey";
 
 const state = {
   token: getToken(),
@@ -11,19 +12,27 @@ const state = {
     userName: null,
     email: null,
     avatar: null,
-    role: null,
-    category: null,
+    role: "user",
+    category: "61d8151fd7fe144b95e88a86",
     survey: null,
   },
   error: null,
 };
 const getters = {
   login: (state) => state.login,
+  register: (state) => state.register,
   isLogin: (state) => {
     if (state.token) return state.token;
   },
 };
 const actions = {
+  async register(context) {
+    const { survey } = context.getters.register.survey;
+    let registrationForm = context.getters.register;
+    const { _id } = (await createSurveyRequest({ data: survey })).data;
+    registrationForm.survey = _id;
+    await registrationRequest({ data: registrationForm });
+  },
   async login(context) {
     try {
       const login = context.getters.login;
@@ -42,6 +51,9 @@ const mutations = {
   },
   setDataLogin(state, { fieldName, newValue }) {
     state.login[fieldName] = newValue;
+  },
+  setDataRegister(state, { fieldName, newValue }) {
+    state.register[fieldName] = newValue;
   },
   logout(state) {
     removeToken();

@@ -110,6 +110,28 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/favorites",
+    name: "Favorites",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/favorites/FavoritesPage"
+      ),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/receipt/:id",
+    name: "Receipt",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/receipt/ReceiptDetailsPage"
+      ),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

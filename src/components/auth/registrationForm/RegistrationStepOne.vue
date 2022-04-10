@@ -7,7 +7,11 @@
           <div>планированию питания, как к Вам обращаться?</div>
         </div>
         <div class="col-12 registration-step-one__input-container">
-          <ValidationInputField label="Имя пользователя" class="col-6" />
+          <ValidationInputField
+            label="Имя пользователя"
+            class="col-6"
+            v-model="userName"
+          />
         </div>
       </div>
     </template>
@@ -27,6 +31,19 @@ import ValidationInputField from "../../validationInputFields/ValidationInputFie
 export default {
   name: "RegistrationStepOne",
   components: { ValidationInputField, CreateLayout },
+  computed: {
+    userName: {
+      get() {
+        return this.$store.getters.register.userName;
+      },
+      set(newValue) {
+        this.$store.commit("setDataRegister", {
+          fieldName: "userName",
+          newValue,
+        });
+      },
+    },
+  },
 };
 </script>
 

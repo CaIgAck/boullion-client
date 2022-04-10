@@ -11,7 +11,7 @@
         </div>
         <div class="receipt-plan__container">
           <div v-for="(receipts, ind) in dayOfWeek[day]" :key="ind">
-            <ReceiptImg />
+            <ReceiptImg :entry="receipts" />
           </div>
         </div>
       </div>

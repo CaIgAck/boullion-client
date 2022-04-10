@@ -8,7 +8,7 @@
           кулинарном мире! Введите почту:
         </div>
         <div class="col-12 registration-step-one__input-container">
-          <ValidationInputField label="E-mail" class="col-6" />
+          <ValidationInputField label="E-mail" class="col-6" v-model="email" />
         </div>
       </div>
     </template>
@@ -28,6 +28,16 @@ import ValidationInputField from "../../validationInputFields/ValidationInputFie
 export default {
   name: "RegistrationStepTwo",
   components: { ValidationInputField, CreateLayout },
+  computed: {
+    email: {
+      get() {
+        return this.$store.getters.register.email;
+      },
+      set(newValue) {
+        this.$store.commit("setDataRegister", { fieldName: "email", newValue });
+      },
+    },
+  },
 };
 </script>
 

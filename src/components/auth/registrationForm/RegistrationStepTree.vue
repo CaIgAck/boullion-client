@@ -7,12 +7,21 @@
           персональные данные придумайте пароль.
         </div>
         <div class="col-12 registration-step-one__input-container">
-          <ValidationInputField label="Пароль" class="col-6" type="password" />
+          <ValidationInputField
+            label="Пароль"
+            class="col-6"
+            type="password"
+            v-model="password"
+          />
           <ValidationInputField
             label="Повторите пароль"
             class="col-6"
             type="password"
+            v-model="repeatPassword"
           />
+          <div v-if="passwordsDoNotMatch" class="form-control__errors">
+            Пароли не совпадают
+          </div>
         </div>
       </div>
       <div v-if="isShowFinishText">
@@ -45,6 +54,9 @@ export default {
   data() {
     return {
       isShowFinishText: false,
+      password: null,
+      repeatPassword: null,
+      passwordsDoNotMatch: false,
     };
   },
   methods: {
@@ -52,7 +64,15 @@ export default {
       this.isShowFinishText = !this.isShowFinishText;
     },
     goToSurvey() {
-      this.$router.push("/Survey");
+      if (this.password === this.repeatPassword) {
+        this.$store.commit("setDataRegister", {
+          fieldName: "password",
+          newValue: this.password,
+        });
+        this.$router.push("/Survey");
+      } else {
+        this.passwordsDoNotMatch = !this.passwordsDoNotMatch;
+      }
     },
   },
 };
