@@ -2,7 +2,6 @@
   <div class="receipt-details">
     <div>
       <div class="receipt-details__description">
-        {{ receipt }}
         <div class="receipt-details__container">
           <div class="receipt-details__img">
             <img src="../../../public/assetss/image/Rectangle.svg" />
@@ -29,15 +28,22 @@
           </div>
         </div>
       </div>
-      <div class="receipt-details__ingredients">
-        <div></div>
-        <div></div>
+      <div>
+        <div class="receipt-details__text-title-description">Инструкция:</div>
+        <div class="receipt-details__text-description">
+          {{ objectReceipt.receiptDescription }}
+        </div>
       </div>
+      {{ receipt }}
     </div>
-
-    <div class="receipt-details__text-title-description">Инструкция:</div>
-    <div class="receipt-details__text-description">
-      {{ objectReceipt.receiptDescription }}
+    <div class="receipt-details__ingredients">
+      <div class="receipt-details__ingredients-title">
+        <div class="receipt-details__ingredients-title-text">Ингридиенты</div>
+        <div class="receipt-details__ingredients-title-like"></div>
+      </div>
+      <div class="receipt-details__ingredients-items">
+        <div class="receipt-details__ingredients-item"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -59,6 +65,7 @@ export default {
 <style scoped lang="scss">
 @import "public/assetss/style/main-color";
 .receipt-details {
+  display: flex;
   &__description {
   }
   &__container {
@@ -88,6 +95,23 @@ export default {
       color: $main-color;
       line-height: 29px;
       letter-spacing: -0.075em;
+    }
+  }
+  &__ingredients {
+    &-title {
+      display: flex;
+      &-text {
+        font-weight: 500;
+        font-size: $medium-text-size;
+        color: $main-color;
+      }
+      &-like {
+        background: url("../../../public/assetss/image/like_ingredient.svg")
+          no-repeat center;
+        height: 50px;
+        width: 60px;
+        cursor: pointer;
+      }
     }
   }
 }

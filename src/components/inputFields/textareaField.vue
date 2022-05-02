@@ -3,14 +3,14 @@
     <div>
       {{ label }}
       <div class="form-control__container">
-        <input
-          :type="type"
+        <textarea
           :placeholder="placeholder"
           :disabled="disabled"
           class="form-control__input"
           v-model="normalizeData"
+          :rows="rows"
+          :cols="cols"
         />
-        <div class="form-control__line"></div>
       </div>
     </div>
     <div v-if="errors && errors.length > 0" class="form-control__errors">
@@ -21,20 +21,15 @@
 
 <script>
 export default {
-  name: "inputField",
+  name: "textareaField",
   props: {
-    value: [String, Number, InputEvent],
+    type: String,
+    placeholder: String,
     disabled: Boolean,
     errors: Array,
-    placeholder: String,
     label: String,
-    type: String,
-  },
-  methods: {
-    set(value) {
-      console.log(value);
-      this.$emit("input", value);
-    },
+    rows: String,
+    cols: String,
   },
   computed: {
     normalizeData: {

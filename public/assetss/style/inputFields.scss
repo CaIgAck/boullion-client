@@ -15,6 +15,19 @@
       transition: all 0.2s ease-in-out;
     }
   }
+  &__select {
+    .multiselect__tags {
+      background-color: $turquoise!important;
+      border: none;
+      color: $main-color;
+    }
+    .multiselect__single {
+      background-color: inherit!important;
+    }
+    .multiselect__input {
+      background-color: $turquoise!important;
+    }
+  }
   &__line {
     top: 0;
     position: absolute;

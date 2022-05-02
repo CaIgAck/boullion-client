@@ -132,6 +132,17 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/create-receipt",
+    name: "CreateReceipt",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/receipt/ReceiptCreatePage"
+      ),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

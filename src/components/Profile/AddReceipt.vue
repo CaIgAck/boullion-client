@@ -7,7 +7,12 @@
       </div>
       <div class="add-receipt__image"></div>
       <div class="add-receipt__button">
-        <button class="btn-main add-receipt__button-text">Добавить</button>
+        <button
+          class="btn-main add-receipt__button-text"
+          @click="createReceipt"
+        >
+          Добавить
+        </button>
       </div>
     </div>
   </div>
@@ -16,6 +21,11 @@
 <script>
 export default {
   name: "AddReceipt",
+  methods: {
+    createReceipt() {
+      this.$router.push("/create-receipt");
+    },
+  },
 };
 </script>
 
