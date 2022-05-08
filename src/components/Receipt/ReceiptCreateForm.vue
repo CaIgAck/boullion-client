@@ -185,20 +185,19 @@ export default {
     },
     async createReceipt() {
       this.loading = true;
-      const data = new FormData();
-      data.append("img", this.receiptForm.img);
-      await createFileRequest({ data });
-      // try {
-
-      // }
-
-      //   this.receiptForm.category = this.receiptForm.category.value;
-      await createReceiptRequest({ data: this.receiptForm });
-      //   this.loading = false;
-      // } catch (e) {
-      //   this.loading = false;
-      // }
-      // this.$router.go(-1);
+      try {
+        const data = new FormData();
+        data.append("img", this.receiptForm.img);
+        const fileId = (await createFileRequest({ data })).data._id;
+        console.log(fileId);
+        this.receiptForm.img = fileId;
+        this.receiptForm.category = this.receiptForm.category.value;
+        await createReceiptRequest({ data: this.receiptForm });
+        this.loading = false;
+      } catch (e) {
+        this.loading = false;
+      }
+      this.$router.go(-1);
     },
   },
 };

@@ -2,7 +2,7 @@
   <DefaultLayout>
     <template>
       <portal to="header-info">Детали рецепта</portal>
-      <portal to="header-profile">хуй </portal>
+      <portal to="header-profile"> {{ profile.userName }}</portal>
       <ReceiptDetails :receipt="receiptDetails" v-if="receiptDetails" />
     </template>
   </DefaultLayout>
@@ -23,6 +23,9 @@ export default {
   computed: {
     id() {
       return this.$route.params.id;
+    },
+    profile() {
+      return this.$store.getters.getProfile;
     },
   },
   created() {
