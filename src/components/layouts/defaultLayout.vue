@@ -2,7 +2,7 @@
   <div class="main">
     <transition name="fade">
       <NavigationDrawer
-        v-if="isMenu && role"
+        v-if="isMenu"
         @show-menu="showMenu"
         :menu="availableMenu"
       />

@@ -156,7 +156,7 @@ router.beforeEach((to, from, next) => {
   if (guardResult === true) {
     next();
   } else {
-    console.error("[router guard]", guardResult);
+    // console.error("[router guard]", guardResult);
     next(guardResult);
   }
 });

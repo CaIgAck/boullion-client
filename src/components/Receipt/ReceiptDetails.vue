@@ -1,6 +1,6 @@
 <template>
   <div class="receipt-details">
-    <div>
+    <div class="receipt-details__description-container col-8">
       <div class="receipt-details__description">
         <div class="receipt-details__container">
           <div class="receipt-details__img">
@@ -15,7 +15,6 @@
               v-if="objectReceipt.timeForPreparing"
             >
               Время приготовления:
-
               {{ objectReceipt.timeForPreparing }}
             </div>
             <div
@@ -34,15 +33,23 @@
           {{ objectReceipt.receiptDescription }}
         </div>
       </div>
-      {{ receipt }}
     </div>
-    <div class="receipt-details__ingredients">
+    <div class="receipt-details__ingredients col-4">
       <div class="receipt-details__ingredients-title">
         <div class="receipt-details__ingredients-title-text">Ингридиенты</div>
         <div class="receipt-details__ingredients-title-like"></div>
       </div>
-      <div class="receipt-details__ingredients-items">
-        <div class="receipt-details__ingredients-item"></div>
+      <div
+        class="receipt-details__ingredients-items"
+        v-for="(el, index) in getIngredientAmount"
+        :key="index"
+      >
+        <div class="receipt-details__ingredients-item">
+          {{ el.ingredient.ingredientName }}
+        </div>
+        <div>
+          {{ el.amount }}
+        </div>
       </div>
     </div>
   </div>
@@ -52,11 +59,14 @@
 export default {
   name: "ReceiptDetails",
   props: {
-    receipt: Object,
+    receipt: Array,
   },
   computed: {
     objectReceipt() {
       return this.receipt[0];
+    },
+    getIngredientAmount() {
+      return this.objectReceipt?.ingredientAmount ?? [];
     },
   },
 };
@@ -74,15 +84,14 @@ export default {
   &__text {
     margin-left: 20px;
     color: $main-color;
+    font-weight: 500;
     &-title {
-      font-weight: 500;
       font-size: $medium-text-size;
       line-height: 44px;
       letter-spacing: -0.075em;
       margin-bottom: 40px;
     }
     &-title-description {
-      font-weight: 500;
       color: $main-color;
       font-size: $medium-text-size;
       line-height: 44px;
@@ -90,16 +99,43 @@ export default {
       margin-bottom: 16px;
     }
     &-description {
-      font-weight: 500;
       font-size: $small-text-size;
       color: $main-color;
       line-height: 29px;
       letter-spacing: -0.075em;
     }
+    &-timeForPreparing {
+      font-size: $small-text-size;
+    }
+    &-complexity {
+      font-size: $small-text-size;
+    }
   }
   &__ingredients {
-    &-title {
+    &-items {
+      margin: 15px 0;
       display: flex;
+      justify-content: space-between;
+      font-size: $small-text-size;
+      color: $main-color;
+      font-weight: 500;
+    }
+    &-item {
+      display: flex;
+    }
+    &-item:before {
+      font-size: 0;
+      background-color: #eca981;
+      padding: 15px;
+      color: #eca981;
+      border-radius: 50%;
+      margin-right: 20px;
+      content: "o";
+    }
+    &-title {
+      margin-bottom: 55px;
+      display: flex;
+      justify-content: space-between;
       &-text {
         font-weight: 500;
         font-size: $medium-text-size;

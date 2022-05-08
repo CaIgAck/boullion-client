@@ -1,6 +1,7 @@
 import { loginRequest, registrationRequest } from "../../helpers/api/auth";
 import { getToken, removeToken, saveToken } from "../../helpers/jwtHelper";
 import { createSurveyRequest } from "../../helpers/api/survey";
+import axios from "axios";
 
 const state = {
   token: getToken(),
@@ -38,6 +39,9 @@ const actions = {
       const login = context.getters.login;
       const response = await loginRequest({ data: login });
       context.commit("setLogin", { token: response.data.token });
+      setTimeout(() => {
+        context.commit("logout");
+      }, 3600000);
     } catch (e) {
       return e;
     }
@@ -48,6 +52,7 @@ const mutations = {
     saveToken(token);
     state.token = token;
     state.error = false;
+    axios.defaults.headers["x-access-token"] = token.token;
   },
   setDataLogin(state, { fieldName, newValue }) {
     state.login[fieldName] = newValue;

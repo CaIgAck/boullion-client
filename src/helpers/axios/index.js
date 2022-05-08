@@ -19,12 +19,14 @@ export async function axiosInterceptor() {
 
   axios.interceptors.response.use(
     (response) => {
-      console.log(response);
       return response;
     },
     (error) => {
       const { status, data } = error.response;
-      if (status === 401 && data === "Invalid Token") {
+      if (
+        (status === 401 && data === "Invalid Token") ||
+        (status === 403 && data === "Токен обязателен для аунтефикации")
+      ) {
         removeToken();
       }
       if (status === 500 || status === 400) {
@@ -39,8 +41,10 @@ export async function initAxios() {
   //TODO: create deploy
   // process.env.NODE_ENV !== "production" ? BASE_URL : PROD_URL;
   axios.defaults.headers.post["Content-Type"] = "application/json";
-  const { token } = getToken();
-  axios.defaults.headers["x-access-token"] = token;
+  const tokenObj = getToken();
+  if (tokenObj) {
+    axios.defaults.headers["x-access-token"] = tokenObj.token;
+  }
   await axiosInterceptor();
   await store.dispatch("getProfileDetails", { query: null });
 }

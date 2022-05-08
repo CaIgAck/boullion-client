@@ -63,7 +63,10 @@
             </div>
             <div class="file-input col-6">
               <h2 class="file-input__text">Фото блюда</h2>
-              <FileInput v-model="receiptForm.file" />
+              <FileInput
+                v-model="receiptForm.img"
+                @change="(data) => (receiptForm.img = data)"
+              />
             </div>
           </div>
         </div>
@@ -97,6 +100,7 @@ import Vue from "vue";
 import { getCategoriesListRequest } from "../../helpers/api/categories";
 import { createReceiptRequest } from "../../helpers/api/receipt";
 import Loading from "../layouts/loading";
+import { createFileRequest } from "../../helpers/api/file";
 
 const receiptForm = {
   receiptName: null,
@@ -107,7 +111,6 @@ const receiptForm = {
   complexity: null,
   timeForPreparing: null,
   ingredientAmount: [],
-  file: null,
   category: null,
 };
 
@@ -131,10 +134,10 @@ export default {
       loading: false,
     };
   },
-  created() {
+  async created() {
     this.receiptForm.createdBy = this.getProfileId;
-    this.getIngredientList();
-    this.getCategoriesList();
+    await this.getIngredientList();
+    await this.getCategoriesList();
   },
   computed: {
     getProfileId() {
@@ -182,15 +185,20 @@ export default {
     },
     async createReceipt() {
       this.loading = true;
+      const data = new FormData();
+      data.append("img", this.receiptForm.img);
+      await createFileRequest({ data });
+      // try {
 
-      try {
-        this.receiptForm.category = this.receiptForm.category.value;
-        await createReceiptRequest({ data: this.receiptForm });
-        this.loading = false;
-      } catch (e) {
-        this.loading = false;
-      }
-      this.$router.go(-1);
+      // }
+
+      //   this.receiptForm.category = this.receiptForm.category.value;
+      await createReceiptRequest({ data: this.receiptForm });
+      //   this.loading = false;
+      // } catch (e) {
+      //   this.loading = false;
+      // }
+      // this.$router.go(-1);
     },
   },
 };

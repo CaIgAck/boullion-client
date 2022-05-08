@@ -19,7 +19,7 @@
             :placeholder="placeholder"
             :disabled="disabled"
             class="form-control__fileInput"
-            @change="setFile"
+            @change="setFile($event)"
           />
         </label>
       </div>
@@ -41,16 +41,10 @@ export default {
     label: String,
     type: String,
   },
-  computed: {
-    getFileUrl() {
-      return this.value;
-    },
-  },
   methods: {
     setFile(file) {
       const { files } = file.target;
       if (files.length > 0) {
-        this.imgUrl = files[0].path;
         this.$emit("change", files[0]);
         let fReader = new FileReader();
         fReader.readAsDataURL(files[0]);

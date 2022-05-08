@@ -39,7 +39,6 @@ const mutations = {
     };
   },
   setProfileDetails(state, data) {
-    console.log(data);
     state.profile = data;
   },
 };
