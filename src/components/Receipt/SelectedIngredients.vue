@@ -37,7 +37,11 @@ export default {
       if (value) {
         this.amount++;
       } else this.amount > 0 ? this.amount-- : null;
-      this.$emit("calculateAmount", this.amount);
+      const ingredientAmount = {
+        amount: this.amount,
+        ingredient: this.ingredient.value,
+      };
+      this.$emit("calculateAmount", ingredientAmount);
     },
   },
 };

@@ -30,12 +30,6 @@ export default {
     label: String,
     type: String,
   },
-  methods: {
-    set(value) {
-      console.log(value);
-      this.$emit("input", value);
-    },
-  },
   computed: {
     normalizeData: {
       get() {

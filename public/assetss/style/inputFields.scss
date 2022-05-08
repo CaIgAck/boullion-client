@@ -2,6 +2,17 @@
 .form-control {
   color: $main-color;
   width: inherit;
+  &__fileInput {
+    display: none;
+    &-label {
+      width: 329px;
+      height: 276px;
+      border-radius: $large-border;
+      display: block;
+      background-color: $turquoise;
+      border-color: $turquoise;
+    }
+  }
   &__input {
     background: $turquoise;
     padding: 17px 30px;

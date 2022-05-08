@@ -30,6 +30,7 @@ export default {
     label: String,
     rows: String,
     cols: String,
+    value: [String, Number, InputEvent],
   },
   computed: {
     normalizeData: {
