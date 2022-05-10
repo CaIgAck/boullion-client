@@ -3,7 +3,11 @@
     <template>
       <portal to="header-info">Детали рецепта</portal>
       <portal to="header-profile"> {{ profile.userName }}</portal>
-      <ReceiptDetails :receipt="receiptDetails" v-if="receiptDetails" />
+      <ReceiptDetails
+        :receipt="receiptDetails"
+        v-if="receiptDetails"
+        @updateReceiptDetail="getReceiptDetails"
+      />
     </template>
   </DefaultLayout>
 </template>

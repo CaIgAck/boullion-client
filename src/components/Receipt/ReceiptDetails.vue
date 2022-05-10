@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="receipt-details" v-if="receipt && receipt.length > 0">
+    <div
+      class="receipt-details"
+      v-if="receipt && receipt.length > 0 && !loading"
+    >
       <div class="receipt-details__description-container col-8">
         <div class="receipt-details__description">
           <div class="receipt-details__container">
@@ -38,7 +41,11 @@
       <div class="receipt-details__ingredients col-4">
         <div class="receipt-details__ingredients-title">
           <div class="receipt-details__ingredients-title-text">Ингридиенты</div>
-          <div class="receipt-details__ingredients-title-like"></div>
+          <div
+            v-if="!isFavorite"
+            class="receipt-details__ingredients-title-like"
+            @click="addToFavorite"
+          ></div>
         </div>
         <div
           class="receipt-details__ingredients-items"
@@ -66,9 +73,45 @@ export default {
   props: {
     receipt: Array,
   },
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  methods: {
+    async addToFavorite() {
+      this.loading = true;
+      try {
+        const receiptForm = {
+          likeBy: [...this.likeBy, this.userId],
+        };
+        await this.$store.dispatch("updateReceipt", {
+          id: this.receiptId,
+          data: receiptForm,
+        });
+        this.$emit("updateReceiptDetail");
+        this.loading = false;
+      } catch (e) {
+        this.loading = false;
+        return console.error(e);
+      }
+    },
+  },
   computed: {
+    userId() {
+      return this.$store.getters.getProfile._id;
+    },
+    isFavorite() {
+      return this.likeBy.find((el) => el === this.userId);
+    },
+    likeBy() {
+      return this.objectReceipt.likeBy;
+    },
     objectReceipt() {
       return this.receipt[0];
+    },
+    receiptId() {
+      return this.objectReceipt._id;
     },
     getIngredientAmount() {
       return this.objectReceipt?.ingredientAmount ?? [];
@@ -165,6 +208,13 @@ export default {
         height: 50px;
         width: 60px;
         cursor: pointer;
+        &-use {
+          background: url("../../../public/assetss/image/favorite._full.png")
+            no-repeat center;
+          height: 50px;
+          width: 60px;
+          cursor: pointer;
+        }
       }
     }
   }

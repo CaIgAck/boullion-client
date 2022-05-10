@@ -34,10 +34,9 @@ const actions = {
       return e;
     }
   },
-  async changeStatusReceipt(context, { id, status }) {
-    console.log(id, status);
+  async updateReceipt(context, { id, data }) {
     try {
-      const receipt = (await updateReceiptRequest({ id, data: status })).data;
+      const receipt = (await updateReceiptRequest({ id, data })).data;
       context.commit("setReceiptData", {
         fieldName: "receipt",
         value: receipt,

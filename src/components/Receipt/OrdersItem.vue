@@ -51,11 +51,9 @@ export default {
       const data = {
         status: status,
       };
-      this.$store
-        .dispatch("changeStatusReceipt", { id, status: data })
-        .then(() => {
-          this.$store.dispatch("getReceiptList", { query: this.query });
-        });
+      this.$store.dispatch("updateReceipt", { id, status: data }).then(() => {
+        this.$store.dispatch("getReceiptList", { query: this.query });
+      });
     },
   },
   computed: {
