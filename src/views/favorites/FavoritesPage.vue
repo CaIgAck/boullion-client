@@ -3,7 +3,7 @@
     <template>
       <portal to="header-info">Избранное</portal>
       <portal to="header-profile">{{ userName }} </portal>
-      <div class="favorites-container">
+      <div class="favorites-container" v-if="!loading">
         <ReceiptImg
           v-for="(item, index) in getOrderList"
           :key="index"
@@ -11,6 +11,7 @@
           :entry="item"
         />
       </div>
+      <Loading v-else />
     </template>
   </DefaultLayout>
 </template>
@@ -18,11 +19,17 @@
 <script>
 import DefaultLayout from "../../components/layouts/defaultLayout";
 import ReceiptImg from "../../components/Receipt/ReceiptImg";
+import Loading from "../../components/layouts/loading";
 export default {
   name: "FavoritesPage",
-  components: { ReceiptImg, DefaultLayout },
+  components: { Loading, ReceiptImg, DefaultLayout },
   async created() {
     await this.getOrdersList();
+  },
+  data() {
+    return {
+      loading: false,
+    };
   },
   computed: {
     query() {
@@ -50,7 +57,15 @@ export default {
   },
   methods: {
     getOrdersList() {
-      this.$store.dispatch("getReceiptList", { query: this.query });
+      this.loading = true;
+      this.$store
+        .dispatch("getReceiptList", { query: this.query })
+        .then(() => {
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
     },
   },
 };

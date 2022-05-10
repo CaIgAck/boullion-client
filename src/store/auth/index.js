@@ -14,7 +14,7 @@ const state = {
     email: null,
     avatar: null,
     role: "user",
-    category: "61d8151fd7fe144b95e88a86",
+    category: "62763e2ad8758bb630cec048",
     survey: null,
   },
   error: null,
@@ -28,9 +28,12 @@ const getters = {
 };
 const actions = {
   async register(context) {
-    const { survey } = context.getters.register.survey;
+    const { survey } = context.getters.register;
+    const surveyForm = {
+      surveyName: survey,
+    };
     let registrationForm = context.getters.register;
-    const { _id } = (await createSurveyRequest({ data: survey })).data;
+    const { _id } = (await createSurveyRequest({ data: surveyForm })).data;
     registrationForm.survey = _id;
     await registrationRequest({ data: registrationForm });
   },

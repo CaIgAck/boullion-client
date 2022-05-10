@@ -1,8 +1,11 @@
 <template>
   <div class="profile-details">
     <div class="profile-details__container">
-      <ProfileUser />
-      <div class="profile-details__receipt-detail">
+      <ProfileUser :user="userProfile" />
+      <div
+        class="profile-details__receipt-detail"
+        v-if="getReceipts.length > 0"
+      >
         <div class="profile-details__text">Мои рецепты</div>
         <div class="profile-details__receipts" v-if="!isOpenReceiptAll">
           <ReceiptImg
@@ -23,7 +26,7 @@
       <div
         class="profile-details__pagination"
         @click="openAllReceiptUser"
-        v-if="!isOpenReceiptAll"
+        v-if="!isOpenReceiptAll && getReceipts.length > 0"
       >
         Показать все
       </div>

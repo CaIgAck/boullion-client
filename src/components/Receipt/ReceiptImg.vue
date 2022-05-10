@@ -1,7 +1,7 @@
 <template>
   <div class="receipt-img__container" @click="openDetails">
     <img
-      src="../../../public/assetss/image/Rectangle.svg"
+      :src="`data:${contentType};base64, ${img}`"
       alt="Avatar"
       class="receipt-img"
     />
@@ -21,7 +21,22 @@ export default {
       return this.entry._id;
     },
     name() {
-      return this.entry.receiptName;
+      if (this.entry.receiptName.length >= 10) {
+        return this.entry.receiptName.slice(0, 10) + "...";
+      } else return this.entry.receiptName;
+    },
+    receipt() {
+      return this.entry;
+    },
+    img() {
+      if (this.receipt?.img?.img) {
+        return new Buffer(this.receipt?.img?.img?.data).toString("base64");
+      } else return null;
+    },
+    contentType() {
+      if (this.receipt?.img?.img) {
+        return this.receipt?.img?.img?.contentType;
+      } else return null;
     },
   },
   methods: {

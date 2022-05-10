@@ -3,19 +3,20 @@
     <template>
       <portal to="header-info">План питания</portal>
       <portal to="header-profile">{{ userName }} </portal>
-    </template>
-    <div class="receipt-plan__days-container">
-      <div v-for="(day, index) in dayOfWeekKeys" :key="index">
-        <div class="receipt-plan__day">
-          {{ day | dayTranslate }}
-        </div>
-        <div class="receipt-plan__container">
-          <div v-for="(receipts, ind) in dayOfWeek[day]" :key="ind">
-            <ReceiptImg :entry="receipts" />
+      <div class="receipt-plan__days-container" v-if="!loading">
+        <div v-for="(day, index) in dayOfWeekKeys" :key="index">
+          <div class="receipt-plan__day">
+            {{ day | dayTranslate }}
+          </div>
+          <div class="receipt-plan__container">
+            <div v-for="(receipts, ind) in dayOfWeek[day]" :key="ind">
+              <ReceiptImg :entry="receipts" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Loading v-else />
+    </template>
   </DefaultLayout>
 </template>
 
@@ -23,9 +24,10 @@
 import DefaultLayout from "../../components/layouts/defaultLayout";
 import { getReceiptListRequest } from "../../helpers/api/receipt";
 import ReceiptImg from "../../components/Receipt/ReceiptImg";
+import Loading from "../../components/layouts/loading";
 export default {
   name: "MealPlanPage",
-  components: { ReceiptImg, DefaultLayout },
+  components: { Loading, ReceiptImg, DefaultLayout },
   filters: {
     dayTranslate: function (day) {
       day = Number(day);
@@ -51,6 +53,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       ordersList: [],
       componentName: "Orders/OrdersItem",
       pagination: null,
@@ -87,6 +90,7 @@ export default {
   },
   methods: {
     async getOrdersList() {
+      this.loading = true;
       try {
         const { pagination, items } = (
           await getReceiptListRequest({ query: this.query })
@@ -94,7 +98,9 @@ export default {
         this.ordersList = items;
         this.pagination = pagination;
         this.mealPlan();
+        this.loading = false;
       } catch (e) {
+        this.loading = false;
         return console.error(e);
       }
     },

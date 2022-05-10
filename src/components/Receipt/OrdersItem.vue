@@ -2,19 +2,17 @@
   <div class="orders-item__container">
     <div class="orders-item__img-container">
       <img
-        src="../../../public/assetss/image/lapsha.svg"
+        :src="`data:${contentType};base64, ${img}`"
         class="orders-item__img"
       />
     </div>
     <div class="orders-item__info">
-      <div class="orders-item__dish-name">Меземен с фасолью и яйцом</div>
+      <div class="orders-item__dish-name">{{ title }}</div>
       <div class="orders-item__description">
-        Рамен без бульона или маземен - это восхитительный способ использовать
-        сушеные бобы, бульон для приготовления бобов и любые остатки, которые у
-        вас есть.
+        {{ description }}
       </div>
       <div class="orders-item__username">
-        <strong>Пользователь:</strong> Ирина Кто-то там
+        <strong>Пользователь:</strong> {{ userName }}
       </div>
     </div>
     <div class="orders-item__buttons">
@@ -58,6 +56,30 @@ export default {
         .then(() => {
           this.$store.dispatch("getReceiptList", { query: this.query });
         });
+    },
+  },
+  computed: {
+    receipt() {
+      return this.entry;
+    },
+    title() {
+      return this.receipt.receiptName;
+    },
+    description() {
+      return this.receipt.receiptDescription;
+    },
+    userName() {
+      return this.receipt?.createdBy?.userName;
+    },
+    img() {
+      if (this.receipt?.img?.img) {
+        return new Buffer(this.receipt?.img?.img?.data).toString("base64");
+      } else return null;
+    },
+    contentType() {
+      if (this.receipt?.img?.img) {
+        return this.receipt?.img?.img?.contentType;
+      } else return null;
     },
   },
 };

@@ -8,6 +8,7 @@
       />
     </transition>
     <div class="notification" v-if="error">
+      <div>Ошибка:</div>
       <div>
         {{ error.error }}
         {{ error.message }}

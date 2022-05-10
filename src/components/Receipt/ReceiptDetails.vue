@@ -1,63 +1,68 @@
 <template>
-  <div class="receipt-details">
-    <div class="receipt-details__description-container col-8">
-      <div class="receipt-details__description">
-        <div class="receipt-details__container">
-          <div class="receipt-details__img">
-            <img src="../../../public/assetss/image/Rectangle.svg" />
+  <div>
+    <div class="receipt-details" v-if="receipt && receipt.length > 0">
+      <div class="receipt-details__description-container col-8">
+        <div class="receipt-details__description">
+          <div class="receipt-details__container">
+            <div class="receipt-details__img">
+              <img :src="`data:${contentType};base64, ${img}`" />
+            </div>
+            <div class="receipt-details__text">
+              <div class="receipt-details__text-title">
+                {{ objectReceipt.receiptName }}
+              </div>
+              <div
+                class="receipt-details__text-timeForPreparing"
+                v-if="objectReceipt.timeForPreparing"
+              >
+                Время приготовления:
+                {{ objectReceipt.timeForPreparing }}
+              </div>
+              <div
+                class="receipt-details__text-complexity"
+                v-if="objectReceipt.complexity"
+              >
+                Сложность:
+                {{ objectReceipt.complexity }}
+              </div>
+            </div>
           </div>
-          <div class="receipt-details__text">
-            <div class="receipt-details__text-title">
-              {{ objectReceipt.receiptName }}
-            </div>
-            <div
-              class="receipt-details__text-timeForPreparing"
-              v-if="objectReceipt.timeForPreparing"
-            >
-              Время приготовления:
-              {{ objectReceipt.timeForPreparing }}
-            </div>
-            <div
-              class="receipt-details__text-complexity"
-              v-if="objectReceipt.complexity"
-            >
-              Сложность:
-              {{ objectReceipt.complexity }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="receipt-details__text-title-description">Инструкция:</div>
-        <div class="receipt-details__text-description">
-          {{ objectReceipt.receiptDescription }}
-        </div>
-      </div>
-    </div>
-    <div class="receipt-details__ingredients col-4">
-      <div class="receipt-details__ingredients-title">
-        <div class="receipt-details__ingredients-title-text">Ингридиенты</div>
-        <div class="receipt-details__ingredients-title-like"></div>
-      </div>
-      <div
-        class="receipt-details__ingredients-items"
-        v-for="(el, index) in getIngredientAmount"
-        :key="index"
-      >
-        <div class="receipt-details__ingredients-item">
-          {{ el.ingredient.ingredientName }}
         </div>
         <div>
-          {{ el.amount }}
+          <div class="receipt-details__text-title-description">Инструкция:</div>
+          <div class="receipt-details__text-description">
+            {{ objectReceipt.receiptDescription }}
+          </div>
+        </div>
+      </div>
+      <div class="receipt-details__ingredients col-4">
+        <div class="receipt-details__ingredients-title">
+          <div class="receipt-details__ingredients-title-text">Ингридиенты</div>
+          <div class="receipt-details__ingredients-title-like"></div>
+        </div>
+        <div
+          class="receipt-details__ingredients-items"
+          v-for="(el, index) in getIngredientAmount"
+          :key="index"
+        >
+          <div class="receipt-details__ingredients-item">
+            {{ el.ingredient.ingredientName }}
+          </div>
+          <div>
+            {{ el.amount }}
+          </div>
         </div>
       </div>
     </div>
+    <Loading v-else />
   </div>
 </template>
 
 <script>
+import Loading from "../layouts/loading";
 export default {
   name: "ReceiptDetails",
+  components: { Loading },
   props: {
     receipt: Array,
   },
@@ -67,6 +72,18 @@ export default {
     },
     getIngredientAmount() {
       return this.objectReceipt?.ingredientAmount ?? [];
+    },
+    img() {
+      if (this.objectReceipt?.img?.img) {
+        return new Buffer(this.objectReceipt?.img?.img?.data).toString(
+          "base64"
+        );
+      } else return null;
+    },
+    contentType() {
+      if (this.objectReceipt?.img?.img) {
+        return this.objectReceipt?.img?.img?.contentType;
+      } else return null;
     },
   },
 };
@@ -108,6 +125,7 @@ export default {
       font-size: $small-text-size;
     }
     &-complexity {
+      margin-top: 30px;
       font-size: $small-text-size;
     }
   }
