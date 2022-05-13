@@ -20,7 +20,7 @@
         class="btn-main orders-item__button-text"
         @click="changeStatus('accept')"
       >
-        Ободрить
+        Одобрить
       </button>
       <button
         class="btn-main orders-item__button-text"
@@ -51,7 +51,7 @@ export default {
       const data = {
         status: status,
       };
-      this.$store.dispatch("updateReceipt", { id, status: data }).then(() => {
+      this.$store.dispatch("updateReceipt", { id, data }).then(() => {
         this.$store.dispatch("getReceiptList", { query: this.query });
       });
     },

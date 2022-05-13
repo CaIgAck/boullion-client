@@ -13,7 +13,7 @@ const state = {
     userName: null,
     email: null,
     avatar: null,
-    role: "user",
+    role: "admin",
     category: "62763e2ad8758bb630cec048",
     survey: null,
   },

@@ -102,7 +102,7 @@ import { createReceiptRequest } from "../../helpers/api/receipt";
 import Loading from "../layouts/loading";
 import { createFileRequest } from "../../helpers/api/file";
 
-const receiptForm = {
+let receiptForm = {
   receiptName: null,
   img: null,
   receiptDescription: null,
@@ -138,6 +138,19 @@ export default {
     this.receiptForm.createdBy = this.getProfileId;
     await this.getIngredientList();
     await this.getCategoriesList();
+  },
+  beforeDestroy() {
+    receiptForm = {
+      receiptName: null,
+      img: null,
+      receiptDescription: null,
+      status: "new",
+      createdBy: null,
+      complexity: null,
+      timeForPreparing: null,
+      ingredientAmount: [],
+      category: null,
+    };
   },
   computed: {
     getProfileId() {

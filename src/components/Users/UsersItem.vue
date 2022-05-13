@@ -8,9 +8,11 @@
       />
     </div>
     <div class="users-item__info">
-      <div class="users-item__name">Екатерина Замолодчикова</div>
+      <div class="users-item__name">{{ name }}</div>
       <div class="users-item__age">Возраст: 38лет</div>
-      <div class="users-item__form-of-nutrition">Форма питания: Веган</div>
+      <div class="users-item__form-of-nutrition">
+        Форма питания: {{ formEat }}
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +22,23 @@ export default {
   name: "UsersItem",
   props: {
     entry: Object,
+  },
+  computed: {
+    survey() {
+      return this.entry?.survey?.surveyName;
+    },
+    name() {
+      return this.entry.userName;
+    },
+    formEat() {
+      const form = {
+        vegetarian: "Вегетарианская",
+        traditional: "Традиционная",
+        vegan: "Веган",
+        fruit: "Фрукторианская",
+      };
+      return form[this.survey] ? form[this.survey] : "Никакая";
+    },
   },
 };
 </script>
