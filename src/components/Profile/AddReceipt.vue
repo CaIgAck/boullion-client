@@ -24,6 +24,7 @@ export default {
   methods: {
     createReceipt() {
       this.$router.push("/create-receipt");
+      return;
     },
   },
 };
