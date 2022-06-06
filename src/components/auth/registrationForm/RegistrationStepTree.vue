@@ -33,13 +33,13 @@
     </template>
     <template #btns>
       <div class="login-form__next" v-if="!isShowFinishText">
-        <button class="btn-main" @click="finishRegistration()">Далее</button>
+        <button class="btn-main" @click="finishRegistration">Далее</button>
       </div>
       <div
         class="login-form__next login-form__next-finish"
         v-if="isShowFinishText"
       >
-        <button class="btn-main" @click="goToSurvey()">Далее</button>
+        <button class="btn-main" @click="goToSurvey">Далее</button>
       </div>
     </template>
   </CreateLayout>
@@ -61,7 +61,9 @@ export default {
   },
   methods: {
     finishRegistration() {
-      this.isShowFinishText = !this.isShowFinishText;
+      if (this.password === this.repeatPassword) {
+        this.isShowFinishText = !this.isShowFinishText;
+      } else this.passwordsDoNotMatch = !this.passwordsDoNotMatch;
     },
     goToSurvey() {
       if (this.password === this.repeatPassword) {
