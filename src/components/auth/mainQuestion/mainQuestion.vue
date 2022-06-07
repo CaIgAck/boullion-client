@@ -3,7 +3,7 @@
     <div class="main-question__content">
       <div class="main-question__text">Рады видеть вас!</div>
       <div class="main-question__text">
-        Уточните у вас уже естьучетная запись?
+        Уточните у вас уже есть учетная запись?
       </div>
     </div>
     <div class="main-question__controls">

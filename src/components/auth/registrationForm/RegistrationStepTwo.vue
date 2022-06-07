@@ -3,20 +3,23 @@
     <template>
       <div>
         <div class="registration-step-one__text">
-          Очень приятно познакомиться, Катерина! Теперь установим с вами
-          контакт, чтобы я мог высылать Вам уведомления о интересных событиях в
-          кулинарном мире! Введите почту:
+          Очень приятно познакомиться! Можете указать свою почту:
         </div>
         <div class="col-12 registration-step-one__input-container">
-          <ValidationInputField label="E-mail" class="col-6" v-model="email" />
+          <ValidationInputField
+            label="E-mail"
+            class="col-6"
+            v-model="email"
+            rules="email|required"
+          />
         </div>
       </div>
     </template>
-    <template #btns>
+    <template v-slot:btns="{ handleSubmit }">
       <div class="login-form__next">
-        <router-link to="/registration-step-tree" class="btn-main"
-          >Далее</router-link
-        >
+        <button class="btn-main" @click="handleSubmit(goToStepTree)">
+          Далее
+        </button>
       </div>
     </template>
   </CreateLayout>
@@ -36,6 +39,11 @@ export default {
       set(newValue) {
         this.$store.commit("setDataRegister", { fieldName: "email", newValue });
       },
+    },
+  },
+  methods: {
+    goToStepTree() {
+      this.$router.push("/registration-step-tree");
     },
   },
 };

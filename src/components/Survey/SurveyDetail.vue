@@ -26,7 +26,13 @@
       <h3 class="survey__title">Спасибо за пройденный опрос</h3>
     </div>
     <div class="survey__next">
-      <button class="btn-main" @click="nextSurvey">Далее</button>
+      <button
+        class="btn-main"
+        @click="nextSurvey"
+        v-on:keyup.enter="nextSurvey"
+      >
+        Далее
+      </button>
     </div>
   </div>
 </template>

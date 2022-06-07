@@ -11,15 +11,16 @@
             label="Имя пользователя"
             class="col-6"
             v-model="userName"
+            rules="required"
           />
         </div>
       </div>
     </template>
-    <template #btns>
+    <template v-slot:btns="{ handleSubmit }">
       <div class="login-form__next">
-        <router-link to="/registration-step-two" class="btn-main"
-          >Далее</router-link
-        >
+        <button class="btn-main" @click="handleSubmit(goToTwoStep)">
+          Далее
+        </button>
       </div>
     </template>
   </CreateLayout>
@@ -42,6 +43,11 @@ export default {
           newValue,
         });
       },
+    },
+  },
+  methods: {
+    goToTwoStep() {
+      this.$router.push("/registration-step-two");
     },
   },
 };
