@@ -66,8 +66,8 @@ export const jsonSurvey = [
     title: "Вы бы предпочли съесть стейк или овощной салат?",
     choicesOrder: "random",
     choices: [
-      { label: "Да", value: ["traditional"] },
-      { label: "Нет", value: ["vegetarian", "vegan", "fruit"] },
+      { label: "Стейк", value: ["traditional"] },
+      { label: "Овощной салат", value: ["vegetarian", "vegan", "fruit"] },
     ],
   },
   {
@@ -85,10 +85,10 @@ export const jsonSurvey = [
     title: "На ваш взгляд кто вы?",
     choicesOrder: "random",
     choices: [
-      { label: "Вегетерианец", value: ["vegetarian"] },
-      { label: "Мясоед", value: ["traditional"] },
-      { label: "Веган", value: ["vegan"] },
-      { label: "Фрукторианец", value: ["fruit"] },
+      { label: "Вегетерианец(без мяса)", value: ["vegetarian"] },
+      { label: "Мясоед(можно всё без ограничений)", value: ["traditional"] },
+      { label: "Веган(Без растительных продуктов)", value: ["vegan"] },
+      { label: "Фрукторианец(фрукты/ягоды/зелень)", value: ["fruit"] },
     ],
   },
 ];
