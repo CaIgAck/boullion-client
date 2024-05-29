@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import TextareaField from "../inputFields/textareaField";
+import TextareaField from "../inputFields/textareaField.vue";
 export default {
   name: "ValidationTextareaInput",
   components: { TextareaField },

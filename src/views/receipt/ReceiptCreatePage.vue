@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import ReceiptCreateForm from "../../components/Receipt/ReceiptCreateForm";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import ReceiptCreateForm from "../../components/Receipt/ReceiptCreateForm.vue";
 export default {
   name: "ReceiptCreatePage",
   components: { ReceiptCreateForm, DefaultLayout },

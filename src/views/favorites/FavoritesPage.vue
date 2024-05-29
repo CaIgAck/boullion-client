@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import ReceiptImg from "../../components/Receipt/ReceiptImg";
-import Loading from "../../components/layouts/loading";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import ReceiptImg from "../../components/Receipt/ReceiptImg.vue";
+import Loading from "../../components/layouts/loading.vue";
 export default {
   name: "FavoritesPage",
   components: { Loading, ReceiptImg, DefaultLayout },

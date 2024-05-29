@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import MainQuestion from "../../components/auth/mainQuestion/mainQuestion";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import MainQuestion from "../../components/auth/mainQuestion/mainQuestion.vue";
 export default {
   name: "Main",
   components: { MainQuestion, DefaultLayout },

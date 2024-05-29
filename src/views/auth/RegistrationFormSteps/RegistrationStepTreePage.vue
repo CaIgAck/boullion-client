@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import DefaultLayout from "../../../components/layouts/defaultLayout";
-import RegistrationStepTree from "../../../components/auth/registrationForm/RegistrationStepTree";
+import DefaultLayout from "../../../components/layouts/defaultLayout.vue";
+import RegistrationStepTree from "../../../components/auth/registrationForm/RegistrationStepTree.vue";
 export default {
   name: "registrationStepTreePage",
   components: { DefaultLayout, RegistrationStepTree },

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import GridList from "../../components/Grid/GridList";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import GridList from "../../components/Grid/GridList.vue";
 export default {
   name: "OrdersPage",
   components: { GridList, DefaultLayout },

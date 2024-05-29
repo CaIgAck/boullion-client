@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import CreateLayout from "../../layouts/createLayout";
-import ValidationInputField from "../../validationInputFields/ValidationInputField";
+import CreateLayout from "../../layouts/createLayout.vue";
+import ValidationInputField from "../../validationInputFields/ValidationInputField.vue";
 export default {
   name: "RegistrationStepTree",
   components: { ValidationInputField, CreateLayout },

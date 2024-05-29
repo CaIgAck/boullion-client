@@ -9,7 +9,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/profile/ProfilePage"),
+      import("../views/profile/ProfilePage.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -18,7 +18,7 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/auth/LoginPage"),
+      import("../views/auth/LoginPage.vue"),
     meta: {
       requiresAuth: false,
     },
@@ -27,7 +27,7 @@ const routes = [
     path: "/main",
     name: "Main",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/auth/MainQuestionPage"),
+      import("../views/auth/MainQuestionPage.vue"),
     meta: {
       requiresAuth: false,
     },
@@ -37,8 +37,8 @@ const routes = [
     name: "registration-step-one",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/auth/RegistrationFormSteps/RegistrationStepOnePage"
-      ),
+        "../views/auth/RegistrationFormSteps/RegistrationStepOnePage.vue"
+    ),
     meta: {
       requiresAuth: false,
     },
@@ -48,7 +48,7 @@ const routes = [
     name: "registration-step-two",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/auth/RegistrationFormSteps/RegistrationStepTwoPage"
+        "../views/auth/RegistrationFormSteps/RegistrationStepTwoPage.vue"
       ),
     meta: {
       requiresAuth: false,
@@ -59,7 +59,7 @@ const routes = [
     name: "registration-step-tree",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/auth/RegistrationFormSteps/RegistrationStepTreePage"
+        "../views/auth/RegistrationFormSteps/RegistrationStepTreePage.vue"
       ),
     meta: {
       requiresAuth: false,
@@ -69,7 +69,7 @@ const routes = [
     path: "/Survey",
     name: "survey",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/auth/SurveyPage"),
+      import("../views/auth/SurveyPage.vue"),
     meta: {
       requiresAuth: false,
     },
@@ -78,7 +78,7 @@ const routes = [
     path: "/profile",
     name: "profile",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/profile/ProfilePage"),
+      import("../views/profile/ProfilePage.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -87,7 +87,7 @@ const routes = [
     path: "/users",
     name: "users",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/users/UsersPage"),
+      import("../views/users/UsersPage.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -96,7 +96,7 @@ const routes = [
     path: "/orders",
     name: "orders",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/orders/OrdersPage"),
+      import("../views/orders/OrdersPage.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -105,7 +105,7 @@ const routes = [
     path: "/meal-plan",
     name: "MealPlan",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/MealPlan/MealPlanPage"),
+      import("../views/MealPlan/MealPlanPage.vue"),
     meta: {
       requiresAuth: true,
     },
@@ -115,7 +115,7 @@ const routes = [
     name: "Favorites",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/favorites/FavoritesPage"
+        "../views/favorites/FavoritesPage.vue"
       ),
     meta: {
       requiresAuth: true,
@@ -126,7 +126,7 @@ const routes = [
     name: "Receipt",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/receipt/ReceiptDetailsPage"
+        "../views/receipt/ReceiptDetailsPage.vue"
       ),
     meta: {
       requiresAuth: true,
@@ -137,7 +137,7 @@ const routes = [
     name: "CreateReceipt",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/receipt/ReceiptCreatePage"
+        "../views/receipt/ReceiptCreatePage.vue"
       ),
     meta: {
       requiresAuth: true,
@@ -147,7 +147,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
+  base: import.meta.env.BASE_URL,
   routes,
 });
 
@@ -156,7 +156,6 @@ router.beforeEach((to, from, next) => {
   if (guardResult === true) {
     next();
   } else {
-    // console.error("[router guard]", guardResult);
     next(guardResult);
   }
 });

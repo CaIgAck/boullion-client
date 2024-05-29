@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import RadioButton from "../inputFields/radioButton";
+import RadioButton from "../inputFields/radioButton.vue";
 import { getSurvey, jsonSurvey } from "../../helpers/SurveyModel";
 export default {
   name: "SurveyDetail",

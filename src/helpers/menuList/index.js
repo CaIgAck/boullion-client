@@ -1,4 +1,4 @@
-const menu = [
+export const menu = [
   {
     name: "План питания",
     path: "/meal-plan",
@@ -25,6 +25,3 @@ const menu = [
     roles: ["admin"],
   },
 ];
-export default {
-  menu,
-};

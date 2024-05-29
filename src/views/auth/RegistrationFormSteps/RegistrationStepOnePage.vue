@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import DefaultLayout from "../../../components/layouts/defaultLayout";
-import RegistrationStepOne from "../../../components/auth/registrationForm/RegistrationStepOne";
+import DefaultLayout from "../../../components/layouts/defaultLayout.vue";
+import RegistrationStepOne from "../../../components/auth/registrationForm/RegistrationStepOne.vue";
 export default {
   name: "registration",
   components: { RegistrationStepOne, DefaultLayout },

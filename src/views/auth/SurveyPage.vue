@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import Survey from "../../components/Survey/SurveyDetail";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import Survey from "../../components/Survey/SurveyDetail.vue";
 export default {
   name: "SurveyPage",
   components: { Survey, DefaultLayout },

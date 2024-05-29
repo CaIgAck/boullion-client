@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import ReceiptDetails from "../../components/Receipt/ReceiptDetails";
-import { getReceiptDetailRequest } from "../../helpers/api/receipt";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import ReceiptDetails from "../../components/Receipt/ReceiptDetails.vue";
+import { getReceiptDetailRequest } from "../../helpers/api/receipt.vue";
 export default {
   name: "ReceiptDetailsPage",
   components: { ReceiptDetails, DefaultLayout },

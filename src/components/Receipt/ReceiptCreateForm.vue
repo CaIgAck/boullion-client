@@ -89,17 +89,17 @@
 </template>
 
 <script>
-import CreateLayout from "../layouts/createLayout";
-import ValidationInputField from "../validationInputFields/ValidationInputField";
-import ValidationTextareaInput from "../validationInputFields/ValidationTextareaInput";
-import ValidationSelectInput from "../validationInputFields/ValidationSelectInput";
+import CreateLayout from "../layouts/createLayout.vue";
+import ValidationInputField from "../validationInputFields/ValidationInputField.vue";
+import ValidationTextareaInput from "../validationInputFields/ValidationTextareaInput.vue";
+import ValidationSelectInput from "../validationInputFields/ValidationSelectInput.vue";
 import { getIngredientListRequest } from "../../helpers/api/ingredients";
-import SelectedIngredients from "./SelectedIngredients";
-import FileInput from "../inputFields/fileInput";
+import SelectedIngredients from "./SelectedIngredients.vue";
+import FileInput from "../inputFields/fileInput.vue";
 import Vue from "vue";
 import { getCategoriesListRequest } from "../../helpers/api/categories";
 import { createReceiptRequest } from "../../helpers/api/receipt";
-import Loading from "../layouts/loading";
+import Loading from "../layouts/loading.vue";
 import { createFileRequest } from "../../helpers/api/file";
 
 let receiptForm = {

@@ -136,8 +136,6 @@ export default {
 @import "public/assetss/style/main-color";
 .receipt-details {
   display: flex;
-  &__description {
-  }
   &__img {
     width: 300px;
     height: 300px;

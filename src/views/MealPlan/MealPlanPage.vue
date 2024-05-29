@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import { getReceiptListRequest } from "../../helpers/api/receipt";
-import ReceiptImg from "../../components/Receipt/ReceiptImg";
-import Loading from "../../components/layouts/loading";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import { getReceiptListRequest } from "../../helpers/api/receipt.vue";
+import ReceiptImg from "../../components/Receipt/ReceiptImg.vue";
+import Loading from "../../components/layouts/loading.vue";
 export default {
   name: "MealPlanPage",
   components: { Loading, ReceiptImg, DefaultLayout },

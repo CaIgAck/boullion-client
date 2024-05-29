@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import { getUsersListRequest } from "../../helpers/api/user";
-import GridList from "../../components/Grid/GridList";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import { getUsersListRequest } from "../../helpers/api/user.vue";
+import GridList from "../../components/Grid/GridList.vue";
 export default {
   name: "UsersPage",
   components: { GridList, DefaultLayout },

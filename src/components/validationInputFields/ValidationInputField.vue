@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import InputField from "../inputFields/inputField";
+import InputField from "../inputFields/inputField.vue";
 export default {
   name: "ValidationInputField",
   components: { InputField },

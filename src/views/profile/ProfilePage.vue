@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import DefaultLayout from "../../components/layouts/defaultLayout";
-import ProfileDetails from "../../components/Profile/ProfileDetails";
+import DefaultLayout from "../../components/layouts/defaultLayout.vue";
+import ProfileDetails from "../../components/Profile/ProfileDetails.vue";
 export default {
   name: "ProfilePage",
   components: { ProfileDetails, DefaultLayout },

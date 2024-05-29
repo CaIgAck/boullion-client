@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import ProfileUser from "./ProfileUser";
-import ReceiptImg from "../Receipt/ReceiptImg";
-import AddReceipt from "./AddReceipt";
+import ProfileUser from "./ProfileUser.vue";
+import ReceiptImg from "../Receipt/ReceiptImg.vue";
+import AddReceipt from "./AddReceipt.vue";
 export default {
   name: "ProfileDetails",
   components: { AddReceipt, ReceiptImg, ProfileUser },
