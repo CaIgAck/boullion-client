@@ -10,7 +10,7 @@
 
 <script>
 import DefaultLayout from "../../components/layouts/defaultLayout.vue";
-import { getUsersListRequest } from "../../helpers/api/user.vue";
+import { getUsersListRequest } from "../../helpers/api/user";
 import GridList from "../../components/Grid/GridList.vue";
 export default {
   name: "UsersPage",

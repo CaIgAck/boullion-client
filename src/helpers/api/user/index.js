@@ -4,7 +4,7 @@ import { getQueriedUrl } from "../../queryStringHelper";
 export async function getUsersListRequest({ query }) {
   return axios.get(
     getQueriedUrl({
-      url: "/users",
+      url: "/api/users",
       query: {
         ...query,
       },
@@ -15,7 +15,7 @@ export async function getUsersListRequest({ query }) {
 export async function getUsersDetailRequest({ id, query }) {
   return axios.get(
     getQueriedUrl({
-      url: `/users/${id}`,
+      url: `/api/users/${id}`,
       query: {
         ...query,
       },

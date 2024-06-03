@@ -4,7 +4,7 @@ import { getQueriedUrl } from "../../queryStringHelper";
 export async function getProfileRequest({ query }) {
   return axios.get(
     getQueriedUrl({
-      url: "/profile",
+      url: "/api/profile",
       query: {
         ...query,
       },

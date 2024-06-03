@@ -4,7 +4,7 @@ import { getQueriedUrl } from "../../queryStringHelper";
 export async function getCategoriesListRequest({ query }) {
   return axios.get(
     getQueriedUrl({
-      url: "/categories",
+      url: "/api/categories",
       query: {
         ...query,
       },
@@ -14,7 +14,7 @@ export async function getCategoriesListRequest({ query }) {
 export async function getCategoriesByIdRequest({ query, id }) {
   return axios.get(
     getQueriedUrl({
-      url: `/categories/${id}`,
+      url: `/api/categories/${id}`,
       query: {
         ...query,
       },
@@ -22,5 +22,5 @@ export async function getCategoriesByIdRequest({ query, id }) {
   );
 }
 export async function createCategoriesRequest({ data }) {
-  return axios.post("/categories", data);
+  return axios.post("/api/categories", data);
 }

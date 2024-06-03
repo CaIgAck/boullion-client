@@ -4,7 +4,7 @@ import { getQueriedUrl } from "../../queryStringHelper";
 export async function getReceiptListRequest({ query }) {
   return axios.get(
     getQueriedUrl({
-      url: "/receipt",
+      url: "/api/receipt",
       query: {
         ...query,
       },
@@ -15,7 +15,7 @@ export async function getReceiptListRequest({ query }) {
 export async function getReceiptDetailRequest({ id, query }) {
   return axios.get(
     getQueriedUrl({
-      url: `/receipt/${id}`,
+      url: `/api/receipt/${id}`,
       query: {
         ...query,
       },

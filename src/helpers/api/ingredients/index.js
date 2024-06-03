@@ -4,7 +4,7 @@ import { getQueriedUrl } from "../../queryStringHelper";
 export async function getIngredientListRequest({ query }) {
   return axios.get(
     getQueriedUrl({
-      url: "/ingredient",
+      url: "/api/ingredient",
       query: {
         ...query,
       },

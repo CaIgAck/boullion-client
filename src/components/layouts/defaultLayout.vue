@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import {menu} from "../../helpers/menuList";
+import { menu } from "../../helpers/menuList";
 import NavigationDrawer from "../Navigation/NavigationDrawer.vue";
 export default {
   name: "defaultLayout",
@@ -69,7 +69,7 @@ export default {
       return this.$store.getters.getProfile.role;
     },
     availableMenu() {
-      return menu.menu.filter((el) => el.roles.includes(this.role));
+      return menu.filter((el) => el.roles.includes(this.role));
     },
   },
   methods: {

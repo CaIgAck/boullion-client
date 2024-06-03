@@ -14,7 +14,7 @@ const state = {
     email: null,
     avatar: null,
     role: "admin",
-    category: "62763e2ad8758bb630cec048",
+    category: "665c6bca6bef5f197c877b3f",
     survey: null,
   },
   error: null,
